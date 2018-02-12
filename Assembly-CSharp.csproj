@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{B190E23E-C0E4-A15A-836C-3D9A95F4ED45}</ProjectGuid>
+    <ProjectGuid>{359EB5F8-6E63-7D13-E891-7DA442526A17}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -51,9 +51,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\TextReader.cs" />
+     <Compile Include="Assets\Scripts\TextReader.cs" />
      <None Include="Assets\TextFiles\Test.txt" />
-     <None Include="Assets\Resources\TextFiles\Test.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
