@@ -1,0 +1,5 @@
+##Text,4
+Hello! This is the first message in the series.
+This is the second message in the series. If this works, the gathering function is working properly.
+All right, this one is supposed to be long. Basically, the point is to show the limitations of the system and judge just how well the overflow works in the text box. The quick brown fox jumped over the lazy dog.
+Congratulations! You read all 4 lines appropriately.
