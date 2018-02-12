@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedfb72fc2028974b98a963ead411a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Test.txt
+  fileName: Test
   pixelsPerUnit: 100
 --- !u!4 &585364988
 Transform:

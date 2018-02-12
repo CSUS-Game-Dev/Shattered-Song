@@ -39,6 +39,7 @@ public class TextReader : MonoBehaviour {
     private bool commandNext = true;
 
     //These keep track of the variables for the text, and tell us whether or not the scene is over
+    private bool textComplete = true;
     private bool done = false;
     private List<string> commands;
     private int currentLine = 0;
@@ -69,7 +70,7 @@ public class TextReader : MonoBehaviour {
         try
         {
             Debug.Log("Attempting to open the file at location : " + filePath + "/TextFiles/" + fileName);
-            streamReader = new StreamReader(filePath + "/TextFiles/" + fileName);
+            streamReader = new StreamReader(filePath + "/TextFiles/" + fileName + ".txt");
             speechBox.enabled = true;
         }
         catch
@@ -86,7 +87,8 @@ public class TextReader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || commandNext){
-            readNext();
+                readNext();
+
         }
 	}
 
@@ -140,16 +142,18 @@ public class TextReader : MonoBehaviour {
 
     //Handles displaying explicit text to the text box
     public void displayText(){
-        try{
-            text.text = streamReader.ReadLine();   
-        }
-        catch{
-            Debug.Log("There was a problem reading through the text file");
-        }
-
-        //This bit just handles whether or not the next line is read as plaintext or not
         int nextLine = currentLine + 1;
-        if(nextLine >= int.Parse(commands[1])){
+        if(!(nextLine > int.Parse(commands[1]))){
+            try{
+                text.text = streamReader.ReadLine();   
+            }
+            catch{
+                Debug.Log("There was a problem reading through the text file");
+            }
+        }
+        //This bit just handles whether or not the next line is read as plaintext or not
+        
+        if(nextLine > int.Parse(commands[1])){
             currentLine = 0;
             commandNext = true;
         }

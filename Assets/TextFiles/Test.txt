@@ -1,16 +1,54 @@
+##Text,3
+This is a text box. You can press the Enter key or space bar to advance the text at any time.
+That's pretty simple. The whole process is pretty simple, actually. By typing "##Text" in a text file followed by a comma and the number of lines you want to enter,you can enter text to fill the box.
+Character portraits are super easy, too. You can load a character portrait in several positions on the screen.
 ##Portrait,add,Smiley,happy,1
-##Portrait,add,Kayla,happy,7
+##Text,7
+By typing "##Portrait" followed by a comma and either "add", "remove", or "move", you can tell Unity to perform the following action.
+"add" would need to be followed by a comma and then the character name, then another comma and the character's expression, and finally another comma with the position on screen you want the portrait to appear
+The character name would need to correspond to a file folder of the same name in the Unity file system, and the expression would need to be the same as an image filename within that folder.
+Character portraits should all be facing from ---> left to right --->
+This scene will handle switching the direction the face for you.
+The on screen positions are as follows-
+Position 1
+##Portrait,move,1,2
+##Text,1
+Position 2
+##Portrait,move,2,3
+##Text,1
+Position 3
+##Portrait,move,3,4
+##Text,1
+Position 4
+##Portrait,move,4,5
 ##Text,2
-Here's some text! Press enter or the spacebar to advance the text.
-Other sample
+Position 5
+Note how the direction the character is facing changed.
+##Portrait,move,5,6
+##Text,1
+Position 6
+##Portrait,move,6,7
+##Text,1
+Position 7
+##Portrait,move,7,8
+##Text,4
+Position 8. This is the same spot as position 4 but it's facing the other direction.
+You can also change images in the background and the foreground at will. Type "##Background" in your text file followed by a comma and then "add" or "remove"
+After "add", place a comma and then enter the filename. This filename would of course have to correspond to an image of your choice placed in the "Resources/BackgroundImages" folder in the project
+For example - 
 ##Background,add,DungeonBackground
-##Text,2
-And here's a background! Press again with sound enabled.
-another line
+##Text,4
+See! Pretty easy. You'll probably only ever do it at the beginning of your dialogue but you have the option of changing or removing the background whenever, so go crazy.
+You can also change the textbox using the same method you would the background or foreground. I don't have an image to use as an example, but it'd be a good idea in case you wanted to use one with jagged edges for emphasis or something.
+All you have to do differently from the background is type "##Box" followed by a comma and a filename. EZ.
+Finally, we can also do audio. Make sure you have sound on.
 ##Audio,Speech,Bryce,Hello-There
-##Portrait,remove,7
-//text line where there is nothing
-##Portrait,move,1,4
-##Text,2
-Line
-This is another line.
+##Text,8
+So you can play any audio at any time you want, and it's pretty cool.
+To do so, type "##Audio" in your text file and follow it with (you guessed it) a comma, followed by either "Speech" or "Other", then the character name, and the name of the audio file.
+Again, the character name and audio file would (of course) have to be named the same as a folder within "Resources/Audio/Speech" and a file within that folder.
+If you selected "Other", the third entry would just have to be the filename (i.e. ##Audio,Other,filename)
+Anyway, once you have your file made, you should save the file as a .txt and drop it into Assets/TextFiles in the project heirarchy.
+After that, if you want to test to see if your dialogue script works, find the "TextManager" game object in the TextScene. Click on it and find the "Text Reader" object in the Inspector window.
+Find the text box called "File Name" within that window and enter your file name (Don't worry about needing to write the .txt at the end) and hit the play button!
+That's all for now! New functionality is pretty easy to add, so make sure to message me on Discord if you have any questions.
