@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/TextScene.unity
+- path: Assets/Initiative_Testing_Scene.unity
   isLoaded: 1
   isActive: 1
