@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 242951102}
   - component: {fileID: 242951101}
   m_Layer: 0
-  m_Name: InitiativeManager_Test
+  m_Name: TempoManager_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
