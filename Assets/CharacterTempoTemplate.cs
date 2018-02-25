@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class CharacterTempoTemplate {
 
-	private int tempo;
-	private int nextTurnModifier; 
-	private int timeWaiting;
-
-	public int Tempo
+	public int tempo
     {
         get
         {
@@ -16,7 +12,7 @@ public class CharacterTempoTemplate {
         }
     }
 
-	public int NextTurnModifier
+	public int nextTurnModifier
 	{
 		get{
 			return nextTurnModifier;
@@ -26,12 +22,33 @@ public class CharacterTempoTemplate {
 		}
 	}
 
+	public string charName
+	{
+		get{
+			return charName;
+		}
+		set{
+			charName = value;
+		}
+	}
+
+	public int timeWaiting
+	{
+		get{
+			return timeWaiting;
+		}
+		set{
+			timeWaiting = value;
+		}
+	}
+
 	public CharacterTempoTemplate(){
 
 	}
 
 	public void takeTurn(){
 		nextTurnModifier = 0;
+		timeWaiting = 0;
 	}
 
 	public void takeTurn(int nextModifier){
@@ -42,5 +59,23 @@ public class CharacterTempoTemplate {
 		return tempo + nextTurnModifier;
 	}
 
+	public void incTimeWaiting(){
+			timeWaiting++;
+	}
+
+	//Quick test to see if the player is ready to go
+	public bool readyToGo(){
+		bool ready;
+		if(timeWaiting > tempo + nextTurnModifier){
+			ready = true;
+		}
+		else{ ready = false;}
+
+		return ready;
+	}
+
+	public int extraTimeWaiting(){
+		return timeWaiting - (tempo + nextTurnModifier);
+	}
 
 }
