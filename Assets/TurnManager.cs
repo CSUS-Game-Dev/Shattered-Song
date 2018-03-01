@@ -38,6 +38,7 @@ public class TurnManager : MonoBehaviour {
 		sortByTurnOrder();
 	}
 
+	//Standard turn being taken where the action taken has no effect on the tempo for next turn
 	public void takeTurn(){
 		//while the character first in the turn order is not ready to go, update time
 		if(characters.Count > 0 || turnOrder.Count > 0){
@@ -56,7 +57,8 @@ public class TurnManager : MonoBehaviour {
 		}
 	}
 
-		public void takeTurn(int nextTurnMod ){
+	//The int passed 
+	public void takeTurn(int nextTurnMod ){
 		if(characters.Count > 0 || turnOrder.Count > 0){
 			while(!turnOrder[0].character.readyToGo()){
 				for(int i = 0; i < characters.Count; i++){
