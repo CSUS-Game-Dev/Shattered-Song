@@ -14,10 +14,10 @@ public class TurnOrderUIManager : MonoBehaviour {
 		turnsDisplayed = new List<TurnUI>();
 		turns = new List<PlayerTurn>();
 
-		
-
+	
 		for(int i = 0; i < numTurnsDisplayed; i++){
 			turnsDisplayed.Add(transform.Find("ListItem" + (i + 1).ToString()).GetComponent<TurnUI>());
+			turnsDisplayed[i].setup();
 			turnsDisplayed[i].setOrderNumber(i + 1);
 		}
 	}

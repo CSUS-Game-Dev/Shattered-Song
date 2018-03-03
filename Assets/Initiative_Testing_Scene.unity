@@ -118,7 +118,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1147391683013028, guid: e48360a37cfa240c2926c1d413b009c5,
     type: 2}
   m_PrefabInternal: {fileID: 273198147}
---- !u!114 &41016536
+--- !u!114 &41016539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -129,13 +129,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}
 --- !u!1 &57510159 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1395713805675086, guid: e48360a37cfa240c2926c1d413b009c5,
     type: 2}
   m_PrefabInternal: {fileID: 273198147}
---- !u!114 &57510160
+--- !u!114 &57510163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -146,7 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}
 --- !u!1 &242951100
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +283,21 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 224349852500092540, guid: e48360a37cfa240c2926c1d413b009c5,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224754535704394354, guid: e48360a37cfa240c2926c1d413b009c5,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224090933083977404, guid: e48360a37cfa240c2926c1d413b009c5,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e48360a37cfa240c2926c1d413b009c5, type: 2}
   m_IsPrefabParent: 0
@@ -314,7 +327,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}
 --- !u!114 &273198152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +406,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1664407356008674, guid: e48360a37cfa240c2926c1d413b009c5,
     type: 2}
   m_PrefabInternal: {fileID: 273198147}
---- !u!114 &423367791
+--- !u!114 &423367794
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -405,13 +417,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}
 --- !u!1 &463796290 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1113672822915384, guid: e48360a37cfa240c2926c1d413b009c5,
     type: 2}
   m_PrefabInternal: {fileID: 273198147}
---- !u!114 &463796291
+--- !u!114 &463796294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -422,7 +433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}
 --- !u!1 &715484292
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,7 +532,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1537359102115532, guid: e48360a37cfa240c2926c1d413b009c5,
     type: 2}
   m_PrefabInternal: {fileID: 273198147}
---- !u!114 &1051202190
+--- !u!114 &1051202193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -533,7 +543,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}
 --- !u!1 &1282594577
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +629,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1244058366190472, guid: e48360a37cfa240c2926c1d413b009c5,
     type: 2}
   m_PrefabInternal: {fileID: 273198147}
---- !u!114 &1407679144
+--- !u!114 &1407679147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -631,4 +640,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93724ac7435874316917aa7fda3c686c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orderInList: {fileID: 0}

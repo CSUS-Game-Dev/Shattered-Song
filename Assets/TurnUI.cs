@@ -7,7 +7,7 @@ public class TurnUI : MonoBehaviour {
 
 	private Image characterImage;
 	private int orderNumber;
-	public Text orderInList;
+	private Text orderInList;
 	private Text characterName;
 
 	public PlayerTurn heldTurn;
@@ -15,6 +15,10 @@ public class TurnUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
+	}
+
+	public void setup(){
 		characterImage = transform.Find("CharacterImage").GetComponent<Image>();
 		orderInList = transform.Find("OrderInList").GetComponent<Text>();
 		characterName = transform.Find("CharacterName").GetComponent<Text>();
