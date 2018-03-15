@@ -213,7 +213,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 365860363}
-  - component: {fileID: 365860362}
   - component: {fileID: 365860364}
   m_Layer: 0
   m_Name: DamageTextManager
@@ -222,17 +221,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &365860362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 365860361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cb055f3b386484458499fc595c07f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &365860363
 Transform:
   m_ObjectHideFlags: 0
@@ -259,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 1211943929772386, guid: d473c2a9a419c39499b0db5bd85ee1fc, type: 2}
   canvasTransform: {fileID: 832805529}
+  cam: {fileID: 1491536273}
 --- !u!1 &832805525
 GameObject:
   m_ObjectHideFlags: 0

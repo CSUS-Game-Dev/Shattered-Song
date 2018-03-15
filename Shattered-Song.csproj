@@ -330,9 +330,10 @@
     <Compile Include="Assets\Scripts\BattleMap.cs" />
     <Compile Include="Assets\Scripts\CharacterTempoTemplate.cs" />
     <Compile Include="Assets\Scripts\DamageTextManager.cs" />
+    <Compile Include="Assets\Scripts\MovementRange.cs" />
+    <Compile Include="Assets\Scripts\MovementRangeManager.cs" />
     <Compile Include="Assets\Scripts\PlayerTurn.cs" />
     <Compile Include="Assets\Scripts\TestDamage.cs" />
-    <Compile Include="Assets\Scripts\TestObsticale.cs" />
     <Compile Include="Assets\Scripts\TestUnit.cs" />
     <Compile Include="Assets\Scripts\TextReader.cs" />
     <Compile Include="Assets\Scripts\TurnManager.cs" />

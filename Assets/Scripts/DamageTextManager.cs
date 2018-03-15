@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* Script to handle damage number popups
+ * singleston so only one can be created at time
+ * method accessed through DamageTextManager.Instance.methodName);*/
+
 public class DamageTextManager : MonoBehaviour {
 
-    private static DamageTextManager instance;
+    private static DamageTextManager instance;  //reference to itself
 
-    public GameObject textPrefab;
-    public RectTransform canvasTransform;
+    public GameObject textPrefab;   //prefab for text
+    public RectTransform canvasTransform;   //canvas reference
+    public Camera cam;
 
-    public static DamageTextManager Instance
+    public static DamageTextManager Instance    //reurns reference to singleton so no multipl copies
     {
         get
         {
@@ -22,41 +27,95 @@ public class DamageTextManager : MonoBehaviour {
         }
     }
 
-    public void CreateText(Vector3 pos, string text, float speed, Vector3 direction)
+    public void CreateText(Vector3 pos, string text, float speed, Vector3 direction)    //create text with certain speed and direction
     {
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
+
+		GameObject temp = Instantiate(textPrefab);		//instantiate prefab at location
+		temp.transform.position = pos;					//set position
+		temp.transform.rotation = Quaternion.identity;    //set rotation
+        temp.transform.SetParent(canvasTransform);                              //make child of canvas
+        temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);   //set scale
+        temp.GetComponent<TestDamage>().Initialize(speed, direction, .5f);           //call setup method of prefab
+        temp.GetComponent<Text>().text = text;                                  //set text
+    }
+
+    public void CreateText(Vector3 pos, string text, float speed)                       //same as above but only variable speed
+    {
+
+		GameObject temp = Instantiate(textPrefab);
+		temp.transform.position = pos;
+		temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        temp.GetComponent<TestDamage>().Initialize(speed, direction);
+        temp.GetComponent<TestDamage>().Initialize(speed, new Vector3(0, 1, 0), .5f);
         temp.GetComponent<Text>().text = text;
     }
 
-    public void CreateText(Vector3 pos, string text, float speed)
+    public void CreateText(Vector3 pos, string text,  Vector3 direction)            //same as above but only variable direction
     {
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
-        temp.transform.SetParent(canvasTransform);
+		GameObject temp = Instantiate(textPrefab);
+		temp.transform.position = pos;
+		temp.transform.rotation = Quaternion.identity;
+		temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        temp.GetComponent<TestDamage>().Initialize(speed, new Vector3(0, 1, 0));
+        temp.GetComponent<TestDamage>().Initialize(1f, direction, .5f);
         temp.GetComponent<Text>().text = text;
     }
 
-    public void CreateText(Vector3 pos, string text,  Vector3 direction)
+    public void CreateText(Vector3 pos, string text)                                //basic text creation method
     {
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
+		GameObject temp = Instantiate(textPrefab);
+		temp.transform.position = pos;
+		temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        temp.GetComponent<TestDamage>().Initialize(3f, direction);
+        temp.GetComponent<TestDamage>().Initialize(1f, new Vector3(0, 1, 0), .5f);
         temp.GetComponent<Text>().text = text;
     }
 
-    public void CreateText(Vector3 pos, string text)
+    public void CreateTextFade(Vector3 pos, string text, float speed, Vector3 direction, float fade)    //create text with certain speed and direction
     {
-        Debug.Log(pos.x + "      " + pos.y + "        " + pos.z);
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
-        Debug.Log(temp.transform.localPosition.x + "      " + temp.transform.localPosition.y + "        " + temp.transform.localPosition.z);
+
+        GameObject temp = Instantiate(textPrefab);      //instantiate prefab at location
+        temp.transform.position = pos;                  //set position
+        temp.transform.rotation = Quaternion.identity;    //set rotation
+        temp.transform.SetParent(canvasTransform);                              //make child of canvas
+        temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);   //set scale
+        temp.GetComponent<TestDamage>().Initialize(speed, direction, fade);           //call setup method of prefab
+        temp.GetComponent<Text>().text = text;                                  //set text
+    }
+
+    public void CreateTextFade(Vector3 pos, string text, float speed, float fade)                       //same as above but only variable speed
+    {
+
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        temp.GetComponent<TestDamage>().Initialize(3f, new Vector3(0, 1, 0));
+        temp.GetComponent<TestDamage>().Initialize(speed, new Vector3(0, 1, 0), fade);
+        temp.GetComponent<Text>().text = text;
+    }
+
+    public void CreateTextFade(Vector3 pos, string text, Vector3 direction, float fade)            //same as above but only variable direction
+    {
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
+        temp.transform.SetParent(canvasTransform);
+        temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        temp.GetComponent<TestDamage>().Initialize(1f, direction, fade);
+        temp.GetComponent<Text>().text = text;
+    }
+
+    public void CreateTextFade(Vector3 pos, string text, float fade)                                //basic text creation method
+    {
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
+        temp.transform.SetParent(canvasTransform);
+        temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
+        temp.GetComponent<TestDamage>().Initialize(1f, new Vector3(0, 1, 0), fade);
         temp.GetComponent<Text>().text = text;
     }
 }
