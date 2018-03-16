@@ -24,7 +24,9 @@ public class DamageTextManager : MonoBehaviour {
 
     public void CreateText(Vector3 pos, string text, float speed, Vector3 direction)
     {
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         temp.GetComponent<TestDamage>().Initialize(speed, direction);
@@ -33,7 +35,9 @@ public class DamageTextManager : MonoBehaviour {
 
     public void CreateText(Vector3 pos, string text, float speed)
     {
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         temp.GetComponent<TestDamage>().Initialize(speed, new Vector3(0, 1, 0));
@@ -42,7 +46,9 @@ public class DamageTextManager : MonoBehaviour {
 
     public void CreateText(Vector3 pos, string text,  Vector3 direction)
     {
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         temp.GetComponent<TestDamage>().Initialize(3f, direction);
@@ -51,9 +57,9 @@ public class DamageTextManager : MonoBehaviour {
 
     public void CreateText(Vector3 pos, string text)
     {
-        Debug.Log(pos.x + "      " + pos.y + "        " + pos.z);
-        GameObject temp = Instantiate(textPrefab, pos, Quaternion.identity);
-        Debug.Log(temp.transform.localPosition.x + "      " + temp.transform.localPosition.y + "        " + temp.transform.localPosition.z);
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         temp.GetComponent<TestDamage>().Initialize(3f, new Vector3(0, 1, 0));

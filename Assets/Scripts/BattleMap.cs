@@ -10,9 +10,16 @@ public class BattleMap : MonoBehaviour {
     public GameObject basicblock2;
     public GameObject testHero;
     public GameObject testEnemy;
-    private bool spawned = false;
     // Use this for initialization
     void Start () {
+        buildMap();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+	}
+
+    private void buildMap(){
         GameObject newtemp;
         GameObject oldtemp = null;
         Map = new GameObject[width, height];
@@ -21,7 +28,8 @@ public class BattleMap : MonoBehaviour {
         {
             for(int j = 0; j < width; j++)
             {
-
+// TODO place magic numbers in variables 
+                //idk what these numbers are. Need to have these quantified
                 Vector3 tempLocation = new Vector3((-10.6f + (.63f * (float)j)), (-4.75f + (.63f * (float)i)), 0f);
                 int number = Random.Range(0,4);
                 if (number >= 1)
@@ -118,17 +126,14 @@ public class BattleMap : MonoBehaviour {
                 
             }
         }
+
+        addCharacters();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		if(spawned == false)
-        {
+
+    private void addCharacters(){
             SpawnHeros();
-            SpawnEnemys();
-            spawned = true;
-        }
-	}
+            SpawnEnemys();      
+    }
 
     private void Spawn(GameObject unit, GameObject block)
     {

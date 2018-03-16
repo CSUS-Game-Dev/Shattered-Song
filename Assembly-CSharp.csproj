@@ -51,16 +51,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Character.cs" />
      <Compile Include="Assets\GamePadInput\Demo\DemoScript.cs" />
      <Compile Include="Assets\GamePadInput\GamePad.cs" />
-     <Compile Include="Assets\Scripts\CharacterTempoTemplate.cs" />
+     <Compile Include="Assets\Scripts\BasicBlock1.cs" />
+     <Compile Include="Assets\Scripts\BattleMap.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterAesthetics.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterStats.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterTempoManager.cs" />
+     <Compile Include="Assets\Scripts\Character\CharacterTempoTemplate.cs" />
+     <Compile Include="Assets\Scripts\Character\SkillList.cs" />
+     <Compile Include="Assets\Scripts\DamageTextManager.cs" />
      <Compile Include="Assets\Scripts\PlayerTurn.cs" />
+     <Compile Include="Assets\Scripts\TestDamage.cs" />
+     <Compile Include="Assets\Scripts\TestObsticale.cs" />
+     <Compile Include="Assets\Scripts\TestUnit.cs" />
      <Compile Include="Assets\Scripts\TextReader.cs" />
      <Compile Include="Assets\Scripts\TurnManager.cs" />
      <Compile Include="Assets\TurnOrderUIManager.cs" />
      <Compile Include="Assets\TurnUI.cs" />
      <None Include="Assets\Dialogue README.txt" />
      <None Include="Assets\TextFiles\Test.txt" />
+ <Reference Include="Facebook.Unity.Settings">
+ <HintPath>/Users/bryce/Documents/Projects/Shattered-Song/Shattered-Song/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

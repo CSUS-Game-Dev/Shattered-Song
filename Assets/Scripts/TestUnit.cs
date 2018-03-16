@@ -99,6 +99,7 @@ public class TestUnit : MonoBehaviour {
 
     void AttackAround(string Direction)
     {
+        Debug.Log("I got called");
         BasicBlock1 tempArea = currentLocation.GetComponent<BasicBlock1>();
         GameObject tempLocation = null;
         switch (Direction)
