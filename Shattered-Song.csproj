@@ -324,11 +324,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Character.cs" />
     <Compile Include="Assets\GamePadInput\Demo\DemoScript.cs" />
     <Compile Include="Assets\GamePadInput\GamePad.cs" />
     <Compile Include="Assets\Scripts\BasicBlock1.cs" />
     <Compile Include="Assets\Scripts\BattleMap.cs" />
-    <Compile Include="Assets\Scripts\CharacterTempoTemplate.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterAesthetics.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterStats.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterTempoManager.cs" />
+    <Compile Include="Assets\Scripts\Character\CharacterTempoTemplate.cs" />
+    <Compile Include="Assets\Scripts\Character\SkillList.cs" />
     <Compile Include="Assets\Scripts\DamageTextManager.cs" />
     <Compile Include="Assets\Scripts\MovementRange.cs" />
     <Compile Include="Assets\Scripts\MovementRangeManager.cs" />
