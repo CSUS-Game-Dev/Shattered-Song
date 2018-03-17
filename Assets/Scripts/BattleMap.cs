@@ -8,6 +8,7 @@ using UnityEngine;
 public class BattleMap : MonoBehaviour {
     private int height = 16;    //height and width of gamemap
     private int width = 35;
+<<<<<<< HEAD
     public GameObject[,] Map;   //array to store tile object
     public GameObject basicblock1;  //prefab for grass
     public GameObject basicblock2;  //prefab for water
@@ -18,14 +19,41 @@ public class BattleMap : MonoBehaviour {
         GameObject newtemp;         //new tile spawned
         GameObject oldtemp = null; //old tile for reference and linking
         Map = new GameObject[width, height];    //initializes array
+=======
+    public GameObject[,] Map;
+    public GameObject basicblock1;
+    public GameObject basicblock2;
+    public GameObject testHero;
+    public GameObject testEnemy;
+    // Use this for initialization
+    void Start () {
+        buildMap();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+	}
+
+    private void buildMap(){
+        GameObject newtemp;
+        GameObject oldtemp = null;
+        Map = new GameObject[width, height];
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
 
         for (int i = 0; i < height; i++)        //start on bottom left and going right then up
         {
             for(int j = 0; j < width; j++)
             {
+<<<<<<< HEAD
 
                 Vector3 tempLocation = new Vector3((-10.6f + (.63f * (float)j)), (-4.75f + (.63f * (float)i)), 0f);     //base poisiotn based on tile size configure for otehr tiles sizes if needed
                 int number = Random.Range(0,4); //25% chance tile will be water tile
+=======
+// TODO place magic numbers in variables 
+                //idk what these numbers are. Need to have these quantified
+                Vector3 tempLocation = new Vector3((-10.6f + (.63f * (float)j)), (-4.75f + (.63f * (float)i)), 0f);
+                int number = Random.Range(0,4);
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
                 if (number >= 1)
                 {
                     newtemp = Instantiate(basicblock1, tempLocation, Quaternion.identity);
@@ -120,17 +148,22 @@ public class BattleMap : MonoBehaviour {
                 
             }
         }
+
+        addCharacters();
     }
+<<<<<<< HEAD
 	
 	// Update is called once per frame
 	void Update () {     //update only used to fix reference bug found in previous version
 		if(spawned == false)
         {
+=======
+
+    private void addCharacters(){
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
             SpawnHeros();
-            SpawnEnemys();
-            spawned = true;
-        }
-	}
+            SpawnEnemys();      
+    }
 
     private void Spawn(GameObject unit, GameObject block)     //move unit to block and update references in both
     {

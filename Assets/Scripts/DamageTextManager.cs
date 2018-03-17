@@ -64,9 +64,15 @@ public class DamageTextManager : MonoBehaviour {
 
     public void CreateText(Vector3 pos, string text)                                //basic text creation method
     {
+<<<<<<< HEAD
 		GameObject temp = Instantiate(textPrefab);
 		temp.transform.position = pos;
 		temp.transform.rotation = Quaternion.identity;
+=======
+        GameObject temp = Instantiate(textPrefab);
+        temp.transform.position = pos;
+        temp.transform.rotation = Quaternion.identity;
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
         temp.transform.SetParent(canvasTransform);
         temp.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         temp.GetComponent<TestDamage>().Initialize(1f, new Vector3(0, 1, 0), .5f);
@@ -75,6 +81,7 @@ public class DamageTextManager : MonoBehaviour {
 
     public void CreateTextFade(Vector3 pos, string text, float speed, Vector3 direction, float fade)    //create text with certain speed and direction
     {
+<<<<<<< HEAD
 
         GameObject temp = Instantiate(textPrefab);      //instantiate prefab at location
         temp.transform.position = pos;                  //set position
@@ -88,6 +95,8 @@ public class DamageTextManager : MonoBehaviour {
     public void CreateTextFade(Vector3 pos, string text, float speed, float fade)                       //same as above but only variable speed
     {
 
+=======
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
         GameObject temp = Instantiate(textPrefab);
         temp.transform.position = pos;
         temp.transform.rotation = Quaternion.identity;

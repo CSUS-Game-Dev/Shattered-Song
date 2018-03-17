@@ -104,7 +104,12 @@ public class TestUnit : MonoBehaviour {
 
     void AttackAround(string Direction)         //attack action for unit right next to unit 
     {
+<<<<<<< HEAD
         BasicBlock1 tempArea = currentLocation.GetComponent<BasicBlock1>();     //get current location block information
+=======
+        Debug.Log("I got called");
+        BasicBlock1 tempArea = currentLocation.GetComponent<BasicBlock1>();
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
         GameObject tempLocation = null;
         switch (Direction)          //choose direction baed off parameter
         {

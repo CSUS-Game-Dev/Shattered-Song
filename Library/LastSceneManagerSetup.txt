@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/TestMovement.unity
+=======
+- path: Assets/TextScene.unity
+>>>>>>> 5107cb68d66cb6b71c9b61881e1b644f0bc1290a
   isLoaded: 1
   isActive: 1
