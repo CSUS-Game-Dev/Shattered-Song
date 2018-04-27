@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BattleGrid.cs" />
      <Compile Include="Assets\Characters\Scripts\Character\Character.cs" />
      <Compile Include="Assets\Characters\Scripts\Character\PlayerCharacter.cs" />
      <Compile Include="Assets\Characters\Scripts\CharacterAesthetics.cs" />
@@ -66,6 +67,7 @@
      <Compile Include="Assets\Characters\Scripts\Stats\Stat.cs" />
      <Compile Include="Assets\GamePadInput\Demo\DemoScript.cs" />
      <Compile Include="Assets\GamePadInput\GamePad.cs" />
+     <Compile Include="Assets\GridSpace.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
