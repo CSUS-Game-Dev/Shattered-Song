@@ -1,0 +1,20 @@
+{
+    "file_type": "Character",
+
+    "character_name": "Idris",
+
+    "character_screen_name": "Idris",
+
+    "character_stats": {
+        "hp": "30",
+        "atk": "15",
+        "def": "13",
+        "mag": "7",
+        "wil": "4",
+        "tmp": "24"
+    },
+
+    "character_skills": ["Charge", "Double Strike"],
+
+    "unique_character": "true"
+}

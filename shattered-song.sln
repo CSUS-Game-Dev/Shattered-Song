@@ -1,7 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Shattered-Song.csproj", "{BCECDF37-8F16-D396-CFD5-DFDA7CD846A7}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Assembly-CSharp.csproj", "{832C6C57-D7C8-8673-565C-F7E135696DDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Assembly-CSharp-Editor.csproj", "{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +11,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BCECDF37-8F16-D396-CFD5-DFDA7CD846A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCECDF37-8F16-D396-CFD5-DFDA7CD846A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCECDF37-8F16-D396-CFD5-DFDA7CD846A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCECDF37-8F16-D396-CFD5-DFDA7CD846A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

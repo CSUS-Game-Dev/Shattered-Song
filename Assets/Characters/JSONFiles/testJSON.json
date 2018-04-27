@@ -1,0 +1,8 @@
+{
+	"testfield": "Hooray! This was in the testfield field",
+	"test_object": {
+		"object_field_1": "string",
+		"object_field_2": "4",
+		"object_field_3": "-2.1154"
+	}
+}
