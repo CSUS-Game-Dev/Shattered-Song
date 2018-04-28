@@ -5,6 +5,8 @@
 
     "character_screen_name": "Idris",
 
+    "character_class": "Knight",
+
     "character_stats": {
         "hp": "30",
         "atk": "15",
@@ -14,7 +16,7 @@
         "tmp": "24"
     },
 
-    "character_skills": ["Charge", "Double Strike"],
+    "character_skills": ["Charge", "Double Strike", "Heavy Swing"],
 
     "unique_character": "true"
 }

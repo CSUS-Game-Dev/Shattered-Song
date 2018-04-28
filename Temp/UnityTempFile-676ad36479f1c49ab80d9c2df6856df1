@@ -195,6 +195,7 @@
 'Assets/Characters/Scripts/Skills/SkillList.cs'
 'Assets/Characters/Scripts/Stats/CharacterStats.cs'
 'Assets/Characters/Scripts/Stats/Stat.cs'
+'Assets/Cursor.cs'
 'Assets/GamePadInput/Demo/DemoScript.cs'
 'Assets/GamePadInput/GamePad.cs'
 'Assets/GridSpace.cs'

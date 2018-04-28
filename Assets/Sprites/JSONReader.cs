@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class JSONReader : MonoBehaviour {
 
-	public enum FileType {Character, Battle, Text, Map,};
+	public enum FileType {Character, Battle, Text, Map};
 
 	void Start(){
 		

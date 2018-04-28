@@ -24,6 +24,22 @@ public class GridSpace : MonoBehaviour {
 		
 	}
 
+	public void addCharacter(Character character){
+		if(!isOccupied){
+			isOccupied = true;
+			occupant = character;
+		}
+	}
+
+	public void empty(){
+		isOccupied = false;
+		occupant = null;
+	}
+
+	public void selectCharacter(){
+
+	}
+
 	public void target(){
 		animator.SetTrigger("Target");
 	}

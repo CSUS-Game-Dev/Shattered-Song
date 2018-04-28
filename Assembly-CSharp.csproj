@@ -65,6 +65,7 @@
      <Compile Include="Assets\Characters\Scripts\Skills\SkillList.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\CharacterStats.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\Stat.cs" />
+     <Compile Include="Assets\Cursor.cs" />
      <Compile Include="Assets\GamePadInput\Demo\DemoScript.cs" />
      <Compile Include="Assets\GamePadInput\GamePad.cs" />
      <Compile Include="Assets\GridSpace.cs" />
