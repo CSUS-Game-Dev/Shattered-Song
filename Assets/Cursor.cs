@@ -7,12 +7,21 @@ public class Cursor : MonoBehaviour {
 	//We might want to change this so that this is the manager for ALL cursors throughout the game.
 	//Keep multiple saved and use them as they are made the active cursor
 
+	private Camera mainCam;
+
+	public float camLerpSpeed;
+
 	public BattleGrid battleGrid;
 
 	private int gridMaxX, gridMaxY;
 
 	private int posX = 0;
 	private int posY = 0;
+
+	private float timeToHold = 0.4f;
+	private float timeBetweenSteps = 0.2f;
+	private float holdingTime = 0f;
+	private bool buttonHeld = false;
 
 	private bool hasCharacterSelected;
 	private Character characterSelected;
@@ -21,6 +30,10 @@ public class Cursor : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		cursorInput();
+
+		if(mainCam != null){
+			mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, new Vector3(transform.position.x, transform.position.y, -10), camLerpSpeed);
+		}
 	}
 
 	public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid){
@@ -33,6 +46,8 @@ public class Cursor : MonoBehaviour {
 		posY = gridPosY;
 
 		transform.position = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -.5f);
+
+		mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 	}
 
 	private void cursorInput(){
@@ -47,6 +62,51 @@ public class Cursor : MonoBehaviour {
 		}
 		if(Input.GetKeyDown(KeyCode.D)){
 			move(GridDirection.RIGHT);
+		}
+
+		//Handles when the buttons are held down - the cursor should move faster automatically
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W)){
+			holdingTime += Time.deltaTime;
+			if(holdingTime > timeToHold){
+				buttonHeld = true;
+				if(Input.GetKey(KeyCode.W)){
+					move(GridDirection.UP);
+				}
+				if(Input.GetKey(KeyCode.S)){
+					move(GridDirection.DOWN);
+				}
+				if(Input.GetKey(KeyCode.A)){
+					move(GridDirection.LEFT);
+				}
+				if(Input.GetKey(KeyCode.D)){
+					move(GridDirection.RIGHT);
+				}
+
+				holdingTime = 0f;
+			}
+
+			if(buttonHeld){
+				holdingTime += Time.deltaTime;
+				if(holdingTime >= timeBetweenSteps){
+					if(Input.GetKey(KeyCode.W)){
+						move(GridDirection.UP);
+					}
+					if(Input.GetKey(KeyCode.S)){
+						move(GridDirection.DOWN);
+					}
+					if(Input.GetKey(KeyCode.A)){
+						move(GridDirection.LEFT);
+					}
+					if(Input.GetKey(KeyCode.D)){
+						move(GridDirection.RIGHT);
+					}
+					holdingTime = 0f;
+				}
+			}
+		}
+		else{
+			holdingTime = 0f;
+			buttonHeld = false;
 		}
 
 		if(Input.GetKeyDown(KeyCode.Space)){

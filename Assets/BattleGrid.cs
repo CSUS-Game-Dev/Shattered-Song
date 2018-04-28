@@ -29,7 +29,7 @@ public class BattleGrid : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		gridSizeX = gridSizeY = 5;
+		gridSizeX = gridSizeY = 12;
 		grid = new GridSpace[gridSizeX, gridSizeY];
 
 		createTestGrid();
@@ -57,10 +57,12 @@ public class BattleGrid : MonoBehaviour {
 		*/
 	}
 
+	public void generateMap(){}
+
 	public void createTestGrid(){
 
-		for(int posX = 0; posX < 5; posX++){
-			for(int posY = 0; posY < 5; posY++){
+		for(int posX = 0; posX < gridSizeX; posX++){
+			for(int posY = 0; posY < gridSizeY; posY++){
 
 				Vector3 offset = new Vector3(posX * TILE_SIZE, posY * TILE_SIZE, 0f);
 
@@ -84,7 +86,7 @@ public class BattleGrid : MonoBehaviour {
 
 		GameObject tempCharacter = Instantiate(testCharacterPrefab);
 
-		grid[locX, locY].addCharacter(tempCharacter.GetComponent<PlayerCharacter>());
+		grid[locX, locY].addCharacter(tempCharacter.GetComponent<Character>());
 		tempCharacter.transform.position = grid[locX, locY].transform.position + new Vector3(0f, 0f, -0.5f);
 	}
 
