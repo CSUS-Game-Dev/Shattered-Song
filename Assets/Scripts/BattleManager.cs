@@ -21,4 +21,16 @@ public class BattleManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	private void turnTaken(){
+		
+	}
+
+	private void checkIfBattleEnded(){
+
+	}
+
+	private void battleEnd(){
+
+	}
 }
