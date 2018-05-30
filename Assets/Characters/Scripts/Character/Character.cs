@@ -6,10 +6,10 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour{
 
-	private CharacterAesthetics characterAesthetics;
-	private CharacterTempoManager tempoManager;
-	private CharacterStats characterStats;
-	private SkillList skills;
+	public CharacterAesthetics characterAesthetics;
+	public CharacterTempoManager tempoManager;
+	public CharacterStats characterStats;
+	public SkillList skills;
 
 	private bool isSetup = false;
 

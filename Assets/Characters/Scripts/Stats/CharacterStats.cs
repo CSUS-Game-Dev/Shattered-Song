@@ -12,7 +12,7 @@ public class CharacterStats {
 	private string screenName;
 
 	public List<Stat> stats;
-	public Stat hp, atk, def, mag, wil, tmp;
+	public Stat hp, atk, def, mag, wil, spd, tmp;
 
 	public CharacterStats(){
 		stats = new List<Stat>();
@@ -24,7 +24,7 @@ public class CharacterStats {
 		stats = new List<Stat>();
 		initializeStatsSpecific(values, charName, scrnName);
 	}
-
+	
 	public CharacterStats(JSONObject characterFile){
 		stats = new List<Stat>();
 		if(characterFile.HasField("file_type") && characterFile.GetField("file_type").str == "Character"){
@@ -46,12 +46,14 @@ public class CharacterStats {
 		def = new Stat("def", int.Parse(statsObject.GetField("def").str));
 		mag = new Stat("mag", int.Parse(statsObject.GetField("mag").str));
 		wil = new Stat("wil", int.Parse(statsObject.GetField("wil").str));
+		spd = new Stat("spd", int.Parse(statsObject.GetField("spd").str));
 		tmp = new Stat("tmp", int.Parse(statsObject.GetField("tmp").str));
 		stats.Add(hp);
 		stats.Add(atk);
 		stats.Add(def);
 		stats.Add(mag);
 		stats.Add(wil);
+		stats.Add(spd);
 		stats.Add(tmp);
 	}
 

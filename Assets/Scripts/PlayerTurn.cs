@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public struct PlayerTurn{
-		public CharacterTempoTemplate character;
+		public CharacterTempoManager character;
 
 		//This is the turn number in the list i.e. the first, second, or third time in the list that the character moves.
 		// The "time" the turn happens is equal to character.nextTurnModifier + (turnInList * character.tempo)
@@ -11,7 +11,7 @@ public struct PlayerTurn{
 
 
 
-		public PlayerTurn(CharacterTempoTemplate c, int turn){
+		public PlayerTurn(CharacterTempoManager c, int turn){
 			turnInList = turn;
 			character = c;
 		}

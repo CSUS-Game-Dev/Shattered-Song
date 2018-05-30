@@ -8,11 +8,14 @@ public class BattleGrid : MonoBehaviour {
 	//Therefore a 64x64 pixel sprite will measure at 0.64 Unity "units"
 	public static float TILE_SIZE = 0.64f;
 
+/* 
 	public Vector2 target;
 
 	public GridDirection direction;
 
 	public int distance;
+*/
+	
 
 	public GridSpace[,] grid;
 
@@ -28,41 +31,30 @@ public class BattleGrid : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-		gridSizeX = gridSizeY = 12;
-		grid = new GridSpace[gridSizeX, gridSizeY];
-
-		createTestGrid();
-
-		GameObject cursorTemp = Instantiate(cursorPrefab, transform.position, Quaternion.identity, transform);
-		cursorTemp.GetComponent<Cursor>().setup(0, 0, this);
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		/* 
-		if(Input.GetKeyDown(KeyCode.Space)){
-			targetPoint((int)target.x, (int)target.y);
-			//animator.SetTrigger("Target");
-		}
-		else if(Input.GetKeyDown(KeyCode.L)){
-			targetRangeLine((int)target.x, (int)target.y, distance, direction);
-			//animator.SetTrigger("Untarget");
-		}
-		else if(Input.GetKeyDown(KeyCode.C)){
-			targetRangeCircle((int)target.x, (int)target.y, distance);
-		}
-		*/
 	}
 
-	public void generateMap(){}
+	public void generateMap(int sizeX, int sizeY){
+		gridSizeX = sizeX;
+		gridSizeY = sizeY;
 
-	public void createTestGrid(){
+		grid = new GridSpace[gridSizeX, gridSizeY];
 
-		for(int posX = 0; posX < gridSizeX; posX++){
-			for(int posY = 0; posY < gridSizeY; posY++){
+		createTestGrid(sizeX, sizeY);
+		createTestCharacter();
+		
+		GameObject cursorTemp = Instantiate(cursorPrefab, transform.position, Quaternion.identity, transform);
+		cursorTemp.GetComponent<Cursor>().setup(sizeX / 2, sizeY / 2, this);
+
+	}
+
+	public void createTestGrid(int sizeX, int sizeY){
+
+		for(int posX = 0; posX < sizeX; posX++){
+			for(int posY = 0; posY < sizeY; posY++){
 
 				Vector3 offset = new Vector3(posX * TILE_SIZE, posY * TILE_SIZE, 0f);
 
@@ -80,8 +72,10 @@ public class BattleGrid : MonoBehaviour {
 				}
 			}
 		}
+	}
 
-		int locX = Random.Range(0,gridSizeX);
+	public void createTestCharacter(){
+		int locX = Random.Range(0, gridSizeX);
 		int locY = Random.Range(0, gridSizeY);
 
 		GameObject tempCharacter = Instantiate(testCharacterPrefab);
@@ -90,6 +84,14 @@ public class BattleGrid : MonoBehaviour {
 		tempCharacter.transform.position = grid[locX, locY].transform.position + new Vector3(0f, 0f, -0.5f);
 	}
 
+	public GameObject addCharacter(GameObject characterPrefab, int posX, int posY){
+		GameObject tempCharacter = Instantiate(characterPrefab);
+
+		grid[posX, posY].addCharacter(tempCharacter.GetComponent<Character>());
+		tempCharacter.transform.position = grid[posX, posY].transform.position + new Vector3(0f, 0f, -0.5f);
+
+		return tempCharacter;
+	}
 
 	public void targetPoint(int targetX, int targetY){
 		grid[targetX, targetY].animator.SetTrigger("Target");
@@ -173,7 +175,7 @@ public class BattleGrid : MonoBehaviour {
 				break;
 		}
 
-		for(int i = 0; i < distance; i++){
+		for(int i = 0; i < range; i++){
 			if(!spaceExistsInGrid(currentX, currentY)){
 				break;
 			}

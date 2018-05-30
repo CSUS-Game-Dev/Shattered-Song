@@ -1,11 +1,11 @@
 {
     "file_type": "Character",
 
-    "character_name": "Idris",
+    "character_name": "Raven",
 
-    "character_screen_name": "Idris",
+    "character_screen_name": "Raven",
 
-    "character_class": "Knight",
+    "character_class": "Mage",
 
     "character_stats": {
         "hp": "30",
@@ -13,10 +13,11 @@
         "def": "13",
         "mag": "7",
         "wil": "4",
+        "spd": "3",
         "tmp": "24"
     },
 
-    "character_skills": ["Charge", "Double Strike", "Heavy Swing"],
+    "character_skills": ["Fireball", "Explosive Rune", "Unstable Potion"],
 
     "unique_character": "true"
 }

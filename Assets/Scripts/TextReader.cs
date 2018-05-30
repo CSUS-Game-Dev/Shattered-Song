@@ -102,7 +102,8 @@ public class TextReader : MonoBehaviour {
             }
         }
         else{
-             SceneManager.UnloadSceneAsync("TextScene");
+            streamReader.Close();
+            SceneManager.UnloadSceneAsync("TextScene");
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour {
 
-	private List<CharacterTempoTemplate> characters;
+	private List<CharacterTempoManager> characters;
 	private List<PlayerTurn> turnOrder;
 	private static int TURN_TRACKER_COUNT = 10;
 
@@ -12,12 +12,13 @@ public class TurnManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		characters = new List<CharacterTempoTemplate>();
+		characters = new List<CharacterTempoManager>();
 		turnOrder = new List<PlayerTurn>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		/* 
 		if(Input.GetKeyDown("space")){
 			takeTurn();
 		}
@@ -25,15 +26,17 @@ public class TurnManager : MonoBehaviour {
 			takeTurn(10);
 		}
 		if(Input.GetKeyDown("s")){
-			characters.Add(new CharacterTempoTemplate());
-			characters.Add(new CharacterTempoTemplate(4, "Raven", Color.magenta));
-			characters.Add(new CharacterTempoTemplate(5, "Ignis", Color.red));
+			characters.Add(new CharacterTempoManager());
+			characters.Add(new CharacterTempoManager(4, "Raven", Color.magenta));
+			characters.Add(new CharacterTempoManager(5, "Ignis", Color.red));
 			updateList();
 			Debug.Log("TurnOrder list length: " + turnOrder.Count);
 		}
 		if(Input.GetKeyDown("p")){
 			printTurnOrder();
 		}
+
+		*/
 	}
 
 	public void updateList(){

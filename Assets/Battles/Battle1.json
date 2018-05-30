@@ -1,0 +1,55 @@
+{
+    "file_type": "Battle",
+
+    "grid_size": ["13", "12"],
+
+    "map_tileset": "random",
+
+    "player_characters": [
+
+        {
+            "character_name": "Raven", 
+            "position": ["2", "0"],
+            "full_hp": "true",
+            "hp_modifier": "0"
+        },
+
+        {
+            "character_name": "Idris",
+            "position": ["1", "1"],
+            "full_hp": "false",
+            "hp_modifier": "-6"
+        }
+    ],
+
+    "generic_enemy_characters": [
+        {
+            "enemy_template": "knight1",
+            "position": ["8", "10"],
+            "behaviour": "none",
+            "special": "none",
+            "status": "none",
+            "full_hp": "true",
+            "hp_modifier": "0"
+        },
+
+        {
+            "enemy_template": "knight1",
+            "position": ["7", "6"],
+            "behaviour": "none",
+            "special": "none",
+            "status": "none",
+            "full_hp": "false",
+            "hp_modifier": "0"
+        }
+    ],
+
+    "unique_enemy_characters": {
+
+    },
+
+    "win_conditions": "rout",
+
+    "lose_conditions": ["lose_all"]
+
+}

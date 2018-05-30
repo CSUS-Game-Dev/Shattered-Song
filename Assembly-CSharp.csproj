@@ -74,10 +74,10 @@
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Scripts\BasicBlock1.cs" />
      <Compile Include="Assets\Scripts\BattleManager.cs" />
-     <Compile Include="Assets\Scripts\BattleMap.cs" />
      <Compile Include="Assets\Scripts\DamageTextManager.cs" />
      <Compile Include="Assets\Scripts\MovementRange.cs" />
      <Compile Include="Assets\Scripts\MovementRangeManager.cs" />
+     <Compile Include="Assets\Scripts\OLD-BattleMap.cs" />
      <Compile Include="Assets\Scripts\PlayerTurn.cs" />
      <Compile Include="Assets\Scripts\TestDamage.cs" />
      <Compile Include="Assets\Scripts\TestUnit.cs" />

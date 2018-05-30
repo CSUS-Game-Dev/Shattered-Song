@@ -10,9 +10,9 @@ public class JSONReader : MonoBehaviour {
 
 	void Start(){
 		
-		test();
 	}
 
+/* 
 	public void test(){
 		JSONObject obj = new JSONObject(readInJSON("testCharacter", FileType.Character));
 
@@ -20,6 +20,7 @@ public class JSONReader : MonoBehaviour {
 
 		Debug.Log(characterStats.ToString());
 	}
+*/
 
 	public string readInJSON(string fileName, FileType fileType ){
 		StringBuilder builder = new StringBuilder();
@@ -30,8 +31,8 @@ public class JSONReader : MonoBehaviour {
 			case FileType.Character:
 				intermediatePath = "/Characters/JSONFiles/";
 				break;
-			case FileType.Text:
-				intermediatePath = "";
+			case FileType.Battle:
+				intermediatePath = "/Battles/";
 				break;
 			case FileType.Map:
 				intermediatePath = "";
@@ -49,6 +50,8 @@ public class JSONReader : MonoBehaviour {
 			while(!streamReader.EndOfStream){
 				builder.Append(streamReader.ReadLine());
 			}
+
+			streamReader.Close();
         }
         catch
         {
