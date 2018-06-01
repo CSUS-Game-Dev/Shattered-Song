@@ -23,6 +23,11 @@ public class GridTargeting{
 	}
 
 	//Gets all spaces in a line from a target point in a direction, including the target point
+	// --x--
+	// --x--
+	// --x--
+	// -----
+	// -----
 	public List<GridSpace> getSpacesInLine(int targetX, int targetY, int range, GridDirection d){
 		List<GridSpace> spaces = new List<GridSpace>();
 
@@ -49,6 +54,11 @@ public class GridTargeting{
 		return spaces;
 	}
 
+	// --x--
+	// --x--
+	// --o--
+	// -----
+	// -----
 	public List<GridSpace> getSpacesInLineExclusive(int targetX, int targetY, int range, GridDirection d){
 		List<GridSpace> spaces = new List<GridSpace>();
 
@@ -123,6 +133,11 @@ public class GridTargeting{
 		return spaces;
 	}
 
+	// --x--
+	// -xxx-
+	// xxxxx
+	// -xxx-
+	// --x--
 	public List<GridSpace> getSpacesWithinRange(int targetX, int targetY, int range){
 		List<GridSpace> startList = new List<GridSpace>();
 		List<GridSpace> finalList = new List<GridSpace>();
@@ -152,6 +167,11 @@ public class GridTargeting{
 		return finalList;
 	}
 
+	// --x--
+	// --x--
+	// xxxxx
+	// --x--
+	// --x--
 	public List<GridSpace> getSpacesInPlus(int targetX, int targetY, int range){
 		List<GridSpace> spaces = new List<GridSpace>();
 
@@ -164,6 +184,11 @@ public class GridTargeting{
 		return spaces;
 	}
 
+	// --x--
+	// --x--
+	// xxoxx
+	// --x--
+	// --x--
 	public List<GridSpace> getSpacesInPlusExclusive(int targetX, int targetY, int range){
 		List<GridSpace> spaces = new List<GridSpace>();
 
@@ -175,6 +200,11 @@ public class GridTargeting{
 		return spaces;
 	}
 
+	// x---x
+	// -x-x-
+	// --x--
+	// -x-x-
+	// x---x
 	public List<GridSpace> getSpacesInCross(int targetX, int targetY, int range){
 		List<GridSpace> spaces = new List<GridSpace>();
 
@@ -187,6 +217,11 @@ public class GridTargeting{
 		return spaces;
 	}
 
+	// x---x
+	// -x-x-
+	// --o--
+	// -x-x-
+	// x---x
 	public List<GridSpace> getSpacesInCrossExclusive(int targetX, int targetY, int range){
 		List<GridSpace> spaces = new List<GridSpace>();
 
