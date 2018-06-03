@@ -156,6 +156,10 @@ public class Cursor : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.B)){
 			battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 3));
 		}
+
+		if(Input.GetKeyDown(KeyCode.G)){
+			battleGrid.displaySpaces(battleGrid.gridPathing.findMovePathsSimple(5, battleGrid.grid[posX, posY]));
+		}
 	}
 
 	private void move(GridDirection direction){

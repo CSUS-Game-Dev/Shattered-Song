@@ -39,6 +39,14 @@ public class TurnManager : MonoBehaviour {
 		*/
 	}
 
+	public void addCharacters(List<Character> c){
+		foreach(Character character in c){
+			if(!characters.Contains(character.tempoManager)){
+				characters.Add(character.tempoManager);
+			}
+		}
+	}
+
 	public void updateList(){
 		sortByTurnOrder();
 		uiManager.displayNewTurns(turnOrder);

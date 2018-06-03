@@ -71,6 +71,7 @@
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Map\BattleGrid.cs" />
      <Compile Include="Assets\Map\Cursor.cs" />
+     <Compile Include="Assets\Map\GridPathing.cs" />
      <Compile Include="Assets\Map\GridSpace.cs" />
      <Compile Include="Assets\Map\GridTargeting.cs" />
      <Compile Include="Assets\Scripts\BasicBlock1.cs" />

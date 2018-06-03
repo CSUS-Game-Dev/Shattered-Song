@@ -60,18 +60,10 @@ public class BattleManager : MonoBehaviour {
 			GameObject characterObject;
 
 			if(battleGrid.spaceExistsInGrid(posX, posY)){
-				//Vector3 pos = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -0.5f);
 
-				characterObject = battleGrid.addCharacter(playerCharacterPrefab, posX, posY);
-
-				//characterObject.transform.position = pos;
-
+				characterObject = battleGrid.addCharacter(playerCharacterPrefab, posX, posY);;
 
 				PlayerCharacter tempPC = characterObject.GetComponent<PlayerCharacter>();
-
-				//battleGrid.grid[posX, posY].addCharacter(tempPC);
-
-				//characterObject.transform.position = battleGrid.grid[posX, posY].transform.position + characterParent.transform.position;
 
 				string tempCharacterName = tempCharacter.GetField("character_name").str;
 
@@ -81,14 +73,10 @@ public class BattleManager : MonoBehaviour {
 				tempPC.characterAesthetics.loadPlaceholderSprite(tempCharacterName);
 
 				tempPC.characterStats = stats;
-
-				Debug.Log(tempCharacterName + " Created at " + posX + ", " + posY);
 			}
-
-			//GameObject tempObject = Instantiate(playerCharacterPrefab, )
-
-			
 		}
+
+		turnManager.addCharacters(characters);
 	}
 
 	private void loadGenericEnemyCharacters(JSONObject genericCharacters){

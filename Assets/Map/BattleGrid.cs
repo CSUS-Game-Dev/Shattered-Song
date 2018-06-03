@@ -23,10 +23,12 @@ public class BattleGrid : MonoBehaviour {
 	public Sprite img1, img2;
 
 	public GridTargeting gridTargeting;
+	public GridPathing gridPathing;
 
 	// Use this for initialization
 	void Start () {
 		gridTargeting = new GridTargeting(this);
+		gridPathing = new GridPathing(this);
 	}
 
 	public void generateMap(int sizeX, int sizeY){
@@ -54,6 +56,7 @@ public class BattleGrid : MonoBehaviour {
 
 				GameObject temp = Instantiate(gridSpacePrefab, transform.position + offset, Quaternion.identity, transform);
 				grid[posX, posY] = temp.GetComponent<GridSpace>();
+				grid[posX, posY].positionInGrid = new Vector2(posX, posY);
 
 				SpriteRenderer renderer = temp.GetComponent<SpriteRenderer>();
 				int img = Random.Range(0, 2);
@@ -99,6 +102,17 @@ public class BattleGrid : MonoBehaviour {
 		//targeted.Add(space);
 	}
 
+	public void displaySpaces(List<GridSpace> spaces){
+		foreach( GridSpace space in spaces){
+			space.animator.SetTrigger("Display");
+			//targeted.Add(space);
+		}
+	}
+
+	public void displaySpaces(GridSpace space){
+		space.animator.SetTrigger("Display");
+		//targeted.Add(space);
+	}
 	public void untargetAll(){
 
 	}
