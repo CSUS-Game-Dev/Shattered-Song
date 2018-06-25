@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerCharacter : Character {
 
-    public SpriteRenderer sprite;
-
-    public override void setup(int character_ID){
+	public override void setup(JSONObject characterInfo, TurnManager turnManager){
+		base.setup(characterInfo, turnManager);
 	}
 
-	public override void setup(string characterName){
-		
+	public override void takeTurn(){
+
 	}
 
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour {
 
@@ -8,12 +9,19 @@ public class TurnManager : MonoBehaviour {
 	private List<PlayerTurn> turnOrder;
 	private static int TURN_TRACKER_COUNT = 10;
 
-	[SerializeField]public TurnOrderUIManager uiManager;
+	private TurnOrderUIManager uiManager;
 
-	// Use this for initialization
-	void Start () {
+	public GameObject tempoUIManagerPrefab;
+	public GameObject battleUIParent;
+
+	public void setup(){
 		characters = new List<CharacterTempoManager>();
 		turnOrder = new List<PlayerTurn>();
+
+		GameObject temp = Instantiate(tempoUIManagerPrefab, battleUIParent.transform, false);
+		uiManager = temp.GetComponent<TurnOrderUIManager>();
+
+		uiManager.setup();
 	}
 	
 	// Update is called once per frame
@@ -45,6 +53,14 @@ public class TurnManager : MonoBehaviour {
 				characters.Add(character.tempoManager);
 			}
 		}
+		updateList();
+	}
+
+	public void addCharacter(Character c){
+		if(!characters.Contains(c.tempoManager)){
+			characters.Add(c.tempoManager);		
+		}
+		updateList();
 	}
 
 	public void updateList(){

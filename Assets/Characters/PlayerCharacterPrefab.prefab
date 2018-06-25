@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4293999930792724}
   - component: {fileID: 114960569593102726}
   - component: {fileID: 212048621397547106}
-  - component: {fileID: 114420120489268938}
   m_Layer: 0
   m_Name: PlayerCharacterPrefab
   m_TagString: Untagged
@@ -42,18 +41,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114420120489268938
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1822985881201298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19977efbaced347898ef86d3d240331a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  renderer: {fileID: 212048621397547106}
 --- !u!114 &114960569593102726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -65,8 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c263b7fa78e646f6aca724e7637aac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterAesthetics: {fileID: 114420120489268938}
+  characterAesthetics: {fileID: 0}
   skills: {fileID: 0}
+  characterName: 
+  screenName: 
   sprite: {fileID: 212048621397547106}
 --- !u!212 &212048621397547106
 SpriteRenderer:

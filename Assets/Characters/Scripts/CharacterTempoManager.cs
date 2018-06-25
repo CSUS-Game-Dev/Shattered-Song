@@ -12,31 +12,35 @@ public class CharacterTempoManager{
 	public int nextTurnModifier;
 	public string charName;
 	public Color playerColor;
+	public Character character;
 	private int timeWaiting;
 
 
-	public CharacterTempoManager(){
+	public CharacterTempoManager(Character c){
 		tempo = DEFAULT_TEMPO;
 		charName = DEFAULT_NAME;
 		nextTurnModifier = 0;
 		timeWaiting = 0;
 		playerColor = DEFAULT_COLOR;
+		character = c;
 	}
 
-	public CharacterTempoManager(int startTempo, string name){
+	public CharacterTempoManager(int startTempo, string name, Character c){
 		tempo = startTempo;
 		charName = name;
 		nextTurnModifier = 0;
 		timeWaiting = 0;
 		playerColor = DEFAULT_COLOR;
+		character = c;
 	}
 
-	public CharacterTempoManager(int startTempo, string name, Color c){
+	public CharacterTempoManager(int startTempo, string name, Color color, Character c){
 		tempo = startTempo;
 		charName = name;
 		nextTurnModifier = 0;
 		timeWaiting = 0;
-		playerColor = c;
+		playerColor = color;
+		character = c;
 	}
 
 	public void takeTurn(){

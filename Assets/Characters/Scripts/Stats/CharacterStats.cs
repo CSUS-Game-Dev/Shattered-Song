@@ -8,8 +8,8 @@ public class CharacterStats {
 	public static string DEFAULT_NAME = "EMPTY_NAME";
 
 
-	private string characterName;
-	private string screenName;
+	public string characterName;
+	public string screenName;
 
 	public List<Stat> stats;
 	public Stat hp, atk, def, mag, wil, spd, tmp;

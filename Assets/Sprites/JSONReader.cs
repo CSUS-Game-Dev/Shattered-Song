@@ -41,10 +41,8 @@ public class JSONReader : MonoBehaviour {
 
 
 		string filePath = Application.dataPath;
-        Debug.Log("The current filepath is: " + filePath);
         try
         {
-            Debug.Log("Attempting to open the file at location : " + filePath + intermediatePath + fileName + ".JSON");
             StreamReader streamReader = new StreamReader(filePath + intermediatePath + fileName + ".JSON");
 
 			while(!streamReader.EndOfStream){
@@ -55,7 +53,7 @@ public class JSONReader : MonoBehaviour {
         }
         catch
         {
-            Debug.Log("The file in question could not be opened");
+            Debug.Log(filePath + intermediatePath + fileName + ".JSON could not be opened");
         }
 
 		return builder.ToString();

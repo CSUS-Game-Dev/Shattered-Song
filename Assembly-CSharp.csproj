@@ -86,8 +86,8 @@
      <Compile Include="Assets\Scripts\TextReader.cs" />
      <Compile Include="Assets\Scripts\TurnManager.cs" />
      <Compile Include="Assets\Sprites\JSONReader.cs" />
-     <Compile Include="Assets\TurnOrderUIManager.cs" />
-     <Compile Include="Assets\TurnUI.cs" />
+     <Compile Include="Assets\UI\Combat\TurnList\TempoUI\TurnOrderUIManager.cs" />
+     <Compile Include="Assets\UI\Combat\TurnList\TempoUI\TurnUI.cs" />
      <None Include="Assets\Dialogue README.txt" />
      <None Include="Assets\JSON\readme.txt" />
      <None Include="Assets\TextFiles\Test.txt" />

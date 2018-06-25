@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public struct PlayerTurn{
+	
 		public CharacterTempoManager character;
 
 		//This is the turn number in the list i.e. the first, second, or third time in the list that the character moves.
