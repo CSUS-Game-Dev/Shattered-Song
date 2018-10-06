@@ -65,14 +65,12 @@
      <Compile Include="Assets\Characters\Scripts\Skills\SkillList.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\CharacterStats.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\Stat.cs" />
+     <Compile Include="Assets\Controller.cs" />
      <Compile Include="Assets\Cursors\Cursor.cs" />
      <Compile Include="Assets\Cursors\DialogueCursor.cs" />
      <Compile Include="Assets\Cursors\InputManager.cs" />
      <Compile Include="Assets\Cursors\MapCursor.cs" />
      <Compile Include="Assets\Cursors\MenuCursor.cs" />
-     <Compile Include="Assets\GamePadInput\Demo\DemoScript.cs" />
-     <Compile Include="Assets\GamePadInput\GamePad.cs" />
-     <Compile Include="Assets\InputManager.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
@@ -80,23 +78,10 @@
      <Compile Include="Assets\Map\GridPathing.cs" />
      <Compile Include="Assets\Map\GridSpace.cs" />
      <Compile Include="Assets\Map\GridTargeting.cs" />
-     <Compile Include="Assets\Scripts\BasicBlock1.cs" />
      <Compile Include="Assets\Scripts\BattleManager.cs" />
-     <Compile Include="Assets\Scripts\DamageTextManager.cs" />
-     <Compile Include="Assets\Scripts\MovementRange.cs" />
-     <Compile Include="Assets\Scripts\MovementRangeManager.cs" />
-     <Compile Include="Assets\Scripts\OLD-BattleMap.cs" />
      <Compile Include="Assets\Scripts\PlayerTurn.cs" />
-     <Compile Include="Assets\Scripts\TestDamage.cs" />
-     <Compile Include="Assets\Scripts\TestUnit.cs" />
      <Compile Include="Assets\Scripts\TextReader.cs" />
      <Compile Include="Assets\Scripts\TurnManager.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\ISoftMask.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\MaterialOps.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\MaterialReplacements.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\MaterialReplacer.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\SoftMask.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\SoftMaskable.cs" />
      <Compile Include="Assets\Sprites\JSONReader.cs" />
      <Compile Include="Assets\UI\Combat\Menu\BattleMenu.cs" />
      <Compile Include="Assets\UI\Combat\Menu\MenuObject.cs" />
@@ -104,11 +89,7 @@
      <Compile Include="Assets\UI\Combat\TurnList\TempoUI\TurnUI.cs" />
      <None Include="Assets\Dialogue README.txt" />
      <None Include="Assets\JSON\readme.txt" />
-     <None Include="Assets\SoftMask\Shaders\SoftMaskETC1.shader" />
-     <None Include="Assets\SoftMask\Shaders\SoftMask.cginc" />
      <None Include="Assets\TextFiles\Test.txt" />
-     <None Include="Assets\SoftMask\Shaders\SoftMaskTemplate.cginc" />
-     <None Include="Assets\SoftMask\Shaders\SoftMask.shader" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/bryce/Documents/Projects/Shattered-Song/Shattered-Song/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
@@ -205,6 +186,10 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>/Users/bryce/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

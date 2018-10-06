@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Assembly-CSharp.csproj", "{832C6C57-D7C8-8673-565C-F7E135696DDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Assembly-CSharp-firstpass.csproj", "{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Assembly-CSharp-Editor-firstpass.csproj", "{D39CE4CD-9AE7-45D5-8A9B-F93E5C31CDED}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shattered-Song", "Assembly-CSharp-Editor.csproj", "{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}"
 EndProject
 Global
@@ -15,6 +19,14 @@ Global
 		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{832C6C57-D7C8-8673-565C-F7E135696DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D39CE4CD-9AE7-45D5-8A9B-F93E5C31CDED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D39CE4CD-9AE7-45D5-8A9B-F93E5C31CDED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D39CE4CD-9AE7-45D5-8A9B-F93E5C31CDED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D39CE4CD-9AE7-45D5-8A9B-F93E5C31CDED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFC360E4-C4D1-C9F8-BC73-67D899AC05A1}.Release|Any CPU.ActiveCfg = Release|Any CPU

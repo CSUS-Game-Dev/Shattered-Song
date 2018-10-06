@@ -52,7 +52,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\JSON\Editor\JSONChecker.cs" />
-     <Compile Include="Assets\SoftMask\Scripts\Editor\SoftMaskEditor.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/bryce/Documents/Projects/Shattered-Song/Shattered-Song/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
@@ -157,8 +156,12 @@
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{40AB83CD-882E-CCBD-7CB0-8F6899BDACCE}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{832C6C57-D7C8-8673-565C-F7E135696DDE}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{D39CE4CD-9AE7-45D5-8A9B-F93E5C31CDED}</Project>      <Name>Assembly-CSharp-Editor-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
