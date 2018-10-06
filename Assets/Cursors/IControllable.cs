@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IControllable : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public interface IControllable
+{
+    void takeInput(Controller.InputType input);
+    void focus();
+    void unfocus();
 }
