@@ -2,15 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ICursor : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public interface ICursor
+{
+    void setActive(bool active);
+    bool getActive();
+    void takeAction(Controller.InputType input);
 }
