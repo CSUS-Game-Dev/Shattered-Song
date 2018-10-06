@@ -6,7 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class TextReader : MonoBehaviour {
+public class TextReader : MonoBehaviour
+{
 
     [SerializeField] public string fileName;
     [SerializeField] public float pixelsPerUnit = 100f;
@@ -45,7 +46,8 @@ public class TextReader : MonoBehaviour {
     private int currentLine = 0;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 
         talkWindow = GameObject.Find("TalkScreen").transform;
 
@@ -80,38 +82,44 @@ public class TextReader : MonoBehaviour {
         }
 
         readCommands();
-
-
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || commandNext){
+	void Update ()
+    {
+		if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || commandNext)
+        {
                 readNext();
-
         }
 	}
 
-    public void readNext(){
-        if(!done){
-            if(commandNext){
+    public void readNext()
+    {
+        if(!done)
+        {
+            if(commandNext)
+            {
                 readCommands();       
             }
             else{
                 displayText();
             }
         }
-        else{
+        else
+        {
             streamReader.Close();
             SceneManager.UnloadSceneAsync("TextScene");
         }
     }
 
     //Reads the "Commands" in from the text file.
-    private void readCommands(){
-        if(streamReader.Peek() > -1){
+    private void readCommands()
+    {
+        if(streamReader.Peek() > -1)
+        {
             commands = getTokens(streamReader.ReadLine());
-            switch(commands[0]){
+            switch(commands[0])
+            {
                 case("##Text"):
                         commandNext = false;
                         displayText();
@@ -135,37 +143,45 @@ public class TextReader : MonoBehaviour {
                         break;
             }
         }
-        else{
+        else
+        {
             SceneManager.UnloadSceneAsync("TextScene");
         }
-        
     }
 
     //Handles displaying explicit text to the text box
-    public void displayText(){
+    public void displayText()
+    {
         int nextLine = currentLine + 1;
-        if(!(nextLine > int.Parse(commands[1]))){
-            try{
+        if(!(nextLine > int.Parse(commands[1])))
+        {
+            try
+            {
                 text.text = streamReader.ReadLine();   
             }
-            catch{
+            catch
+            {
                 Debug.Log("There was a problem reading through the text file");
             }
         }
         //This bit just handles whether or not the next line is read as plaintext or not
         
-        if(nextLine > int.Parse(commands[1])){
+        if(nextLine > int.Parse(commands[1]))
+        {
             currentLine = 0;
             commandNext = true;
         }
-        else{
+        else
+        {
             currentLine++;
         }
     }
 
     //Controls which portrait function is called based on the second command in the line
-    public void portrait(){
-        switch(commands[1]){
+    public void portrait()
+    {
+        switch(commands[1])
+        {
             case("move"):
                 movePortrait();
                 break;
@@ -180,7 +196,8 @@ public class TextReader : MonoBehaviour {
         }
     }
 
-    public void addPortrait(){
+    public void addPortrait()
+    {
         string character = commands[2];
         string expression = commands[3];
         int position = int.Parse(commands[4]);
@@ -193,7 +210,8 @@ public class TextReader : MonoBehaviour {
         image.sprite = s;
     }
 
-    public void removePortrait(){
+    public void removePortrait()
+    {
         int position = int.Parse(commands[2]);
 
         Image image = getImageAtPos(position);
@@ -201,7 +219,8 @@ public class TextReader : MonoBehaviour {
     }
 
     //Use this whenever you can. It's faster to move a portrait that's already in the scene than it is to load a new one in.
-    public void movePortrait(){
+    public void movePortrait()
+    {
         int from = int.Parse(commands[2]);
         int to = int.Parse(commands[3]);
 
@@ -213,11 +232,13 @@ public class TextReader : MonoBehaviour {
         image2.sprite = sprite;
     }
 
-    public Image getImageAtPos(int num){
+    public Image getImageAtPos(int num)
+    {
 
         Image image;
 
-        switch(num){
+        switch(num)
+        {
             case 1:
                 image = pos1;
                 break;
@@ -252,8 +273,10 @@ public class TextReader : MonoBehaviour {
     }
 
     //Handles adding and removing images in the background
-    public void background(){
-        switch(commands[1]){
+    public void background()
+    {
+        switch(commands[1])
+        {
             case("add"):
                 backgroundImage.enabled = true;
                 Texture2D t = Resources.Load("BackgroundImages/" + commands[2]) as Texture2D;
@@ -269,8 +292,10 @@ public class TextReader : MonoBehaviour {
     }
 
     //Handles adding and removing images in the foreground
-    public void foreground(){
-        switch(commands[1]){
+    public void foreground()
+    {
+        switch(commands[1])
+        {
             case("add"):
                 foregroundImage.enabled = true;
                 Texture2D t = Resources.Load("ForegroundImages/" + commands[2]) as Texture2D;
@@ -286,16 +311,19 @@ public class TextReader : MonoBehaviour {
     }
 
     //Handles changing the image used as the text box
-    public void box(){
+    public void box()
+    {
         Texture2D t = Resources.Load("SpeechBoxes/" + commands[1]) as Texture2D;
         Sprite s = Sprite.Create(t, new Rect(0.0f, 0.0f, t.width, t.height), new Vector2(t.width/2,t.height/2), pixelsPerUnit);
         speechBox.sprite = s;
     }
 
-    public void sound(){
+    public void sound()
+    {
         string audioType = commands[1];
 
-        switch(audioType){
+        switch(audioType)
+        {
             case("Speech"):
                 AudioClip a = Resources.Load("Audio/Speech/" + commands[2] + "/" + commands[3]) as AudioClip;
                 audioPlayer.clip = a;
@@ -314,15 +342,19 @@ public class TextReader : MonoBehaviour {
 
 
     //Reads through the comma separated commands in the current line and returns them in a list
-    public List<string> getTokens(string input){
+    public List<string> getTokens(string input)
+    {
         List<string> results = new List<string>();
         StringBuilder stringBuilder = new StringBuilder();
 
-        for(int i = 0; i < input.Length; i++){
-            if(!(input[i] == ',')){
+        for(int i = 0; i < input.Length; i++)
+        {
+            if(!(input[i] == ','))
+            {
                 stringBuilder.Append(input[i]);
             }
-            else{
+            else
+            {
                 results.Add(stringBuilder.ToString());
                 stringBuilder = new StringBuilder();
             }
