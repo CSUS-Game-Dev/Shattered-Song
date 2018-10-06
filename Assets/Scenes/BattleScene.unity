@@ -279,12 +279,12 @@ Prefab:
     - target: {fileID: 224516446255142454, guid: c45ea47a43b3b479ca11f6e4c893580c,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1.1799927
       objectReference: {fileID: 0}
     - target: {fileID: 224516446255142454, guid: c45ea47a43b3b479ca11f6e4c893580c,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 10.49971
+      value: -18.2
       objectReference: {fileID: 0}
     - target: {fileID: 224516446255142454, guid: c45ea47a43b3b479ca11f6e4c893580c,
         type: 2}
@@ -326,24 +326,8 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224999221695877554, guid: c45ea47a43b3b479ca11f6e4c893580c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224999221695877554, guid: c45ea47a43b3b479ca11f6e4c893580c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224813476501426576, guid: c45ea47a43b3b479ca11f6e4c893580c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224813476501426576, guid: c45ea47a43b3b479ca11f6e4c893580c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
+    - target: {fileID: 1620489246981780, guid: c45ea47a43b3b479ca11f6e4c893580c, type: 2}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -663,7 +647,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

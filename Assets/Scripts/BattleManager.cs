@@ -46,19 +46,18 @@ public class BattleManager : MonoBehaviour {
 		JSONObject playerCharacters = battleData.GetField("player_characters");
 		loadPlayerCharacters(playerCharacters);
 		
-		JSONObject genericEnemyCharacters = battleData.GetField("generic_enemy_characters");
-		loadGenericEnemyCharacters(genericEnemyCharacters);
+		JSONObject enemyCharacters = battleData.GetField("enemy_characters");
+		loadGenericEnemyCharacters(enemyCharacters);
 
-		
 	}
 
 	private void generateGrid(JSONObject gridSize){
+		
 		int sizeX = int.Parse(gridSize.list[0].str);
 		int sizeY = int.Parse(gridSize.list[1].str);
 
 		battleGrid.generateMap(sizeX, sizeY);
 
-		
 	}
 
 	private void loadPlayerCharacters(JSONObject playerCharacters){
@@ -78,17 +77,6 @@ public class BattleManager : MonoBehaviour {
 				JSONObject tempCharData = new JSONObject(jsonReader.readInJSON(tempCharacterName, JSONReader.FileType.Character));  
 				tempPC.setup(tempCharData, turnManager);
 				
-				/* 
-				CharacterStats stats = new CharacterStats(tempCharData);
-				tempPC.characterName = stats.characterName;
-				tempPC.screenName = stats.screenName;
-				
-				tempPC.characterAesthetics.setup(tempPC);
-				tempPC.characterAesthetics.loadPlaceholderSprite(tempCharacterName);
-				tempPC.characterAesthetics.loadForBattle(turnManager.addCharacter);
-
-				tempPC.characterStats = stats;
-				*/
 			}
 		}
 

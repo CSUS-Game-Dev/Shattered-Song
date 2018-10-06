@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Characters\Scripts\Character\Character.cs" />
+     <Compile Include="Assets\Characters\Scripts\Character\EnemyCharacter.cs" />
      <Compile Include="Assets\Characters\Scripts\Character\PlayerCharacter.cs" />
      <Compile Include="Assets\Characters\Scripts\CharacterAesthetics.cs" />
      <Compile Include="Assets\Characters\Scripts\CharacterTempoManager.cs" />
@@ -64,13 +65,18 @@
      <Compile Include="Assets\Characters\Scripts\Skills\SkillList.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\CharacterStats.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\Stat.cs" />
+     <Compile Include="Assets\Cursors\Cursor.cs" />
+     <Compile Include="Assets\Cursors\DialogueCursor.cs" />
+     <Compile Include="Assets\Cursors\InputManager.cs" />
+     <Compile Include="Assets\Cursors\MapCursor.cs" />
+     <Compile Include="Assets\Cursors\MenuCursor.cs" />
      <Compile Include="Assets\GamePadInput\Demo\DemoScript.cs" />
      <Compile Include="Assets\GamePadInput\GamePad.cs" />
+     <Compile Include="Assets\InputManager.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Map\BattleGrid.cs" />
-     <Compile Include="Assets\Map\Cursor.cs" />
      <Compile Include="Assets\Map\GridPathing.cs" />
      <Compile Include="Assets\Map\GridSpace.cs" />
      <Compile Include="Assets\Map\GridTargeting.cs" />
@@ -85,12 +91,24 @@
      <Compile Include="Assets\Scripts\TestUnit.cs" />
      <Compile Include="Assets\Scripts\TextReader.cs" />
      <Compile Include="Assets\Scripts\TurnManager.cs" />
+     <Compile Include="Assets\SoftMask\Scripts\ISoftMask.cs" />
+     <Compile Include="Assets\SoftMask\Scripts\MaterialOps.cs" />
+     <Compile Include="Assets\SoftMask\Scripts\MaterialReplacements.cs" />
+     <Compile Include="Assets\SoftMask\Scripts\MaterialReplacer.cs" />
+     <Compile Include="Assets\SoftMask\Scripts\SoftMask.cs" />
+     <Compile Include="Assets\SoftMask\Scripts\SoftMaskable.cs" />
      <Compile Include="Assets\Sprites\JSONReader.cs" />
+     <Compile Include="Assets\UI\Combat\Menu\BattleMenu.cs" />
+     <Compile Include="Assets\UI\Combat\Menu\MenuObject.cs" />
      <Compile Include="Assets\UI\Combat\TurnList\TempoUI\TurnOrderUIManager.cs" />
      <Compile Include="Assets\UI\Combat\TurnList\TempoUI\TurnUI.cs" />
      <None Include="Assets\Dialogue README.txt" />
      <None Include="Assets\JSON\readme.txt" />
+     <None Include="Assets\SoftMask\Shaders\SoftMaskETC1.shader" />
+     <None Include="Assets\SoftMask\Shaders\SoftMask.cginc" />
      <None Include="Assets\TextFiles\Test.txt" />
+     <None Include="Assets\SoftMask\Shaders\SoftMaskTemplate.cginc" />
+     <None Include="Assets\SoftMask\Shaders\SoftMask.shader" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/bryce/Documents/Projects/Shattered-Song/Shattered-Song/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
@@ -153,6 +171,9 @@
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.Graphs.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>/Applications/Unity/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>

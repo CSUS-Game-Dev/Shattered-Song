@@ -49,18 +49,16 @@ public class TurnManager : MonoBehaviour {
 
 	public void addCharacters(List<Character> c){
 		foreach(Character character in c){
-			if(!characters.Contains(character.tempoManager)){
-				characters.Add(character.tempoManager);
-			}
+			addCharacter(character);
 		}
-		updateList();
+
 	}
 
 	public void addCharacter(Character c){
 		if(!characters.Contains(c.tempoManager)){
-			characters.Add(c.tempoManager);		
+			characters.Add(c.tempoManager);	
+			updateList();	
 		}
-		updateList();
 	}
 
 	public void updateList(){
@@ -117,24 +115,26 @@ public class TurnManager : MonoBehaviour {
 	
 	public PlayerTurn findLowestTurnCostNotInList(List<PlayerTurn> newTurnOrder){
 		//Temp turn while we iterate through the characters list
-		PlayerTurn newTurn;
+		PlayerTurn newTurn = new PlayerTurn();
 		PlayerTurn resultTurn = new PlayerTurn();
 		resultTurn.turnInList = int.MaxValue;
 
 		//Finds the least cost turn for each character in the characters list
 		//Returns the one that costs the least that is NOT already in the turnOrder list
 		//Right now, in the case of a tie, the character that comes first in the 'characters' list goes first
-		for(int i = 0; i < characters.Count; i++){
+		if(characters.Count != 0){
+			for(int i = 0; i < characters.Count; i++){
 
-			newTurn.character = characters[i];
-			newTurn.turnInList = 0;
+				newTurn.character = characters[i];
+				newTurn.turnInList = 0;
 
-			while(playerTurnInList(newTurn, newTurnOrder)){
-				newTurn.turnInList++;
-			}
+				while(playerTurnInList(newTurn, newTurnOrder)){
+					newTurn.turnInList++;
+				}
 
-			if(resultTurn.character == null || newTurn.timeUntilTurn() < resultTurn.timeUntilTurn()){
-				resultTurn = newTurn;
+				if(resultTurn.character == null || newTurn.timeUntilTurn() < resultTurn.timeUntilTurn()){
+					resultTurn = newTurn;
+				}
 			}
 		}
 

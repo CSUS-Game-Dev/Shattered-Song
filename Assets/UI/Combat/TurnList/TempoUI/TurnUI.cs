@@ -36,6 +36,9 @@ public class TurnUI : MonoBehaviour {
 
 		PlayerTurn tempPT = p;
 		CharacterTempoManager tempCTM = p.character;
+		if(tempCTM == null){
+			Debug.Log("tempCTM is null for character " + p.turnInList);
+		}
 		Character tempC = p.character.character;
 		CharacterAesthetics tempCA = p.character.character.characterAesthetics;
 

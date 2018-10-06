@@ -22,7 +22,7 @@
         }
     ],
 
-    "generic_enemy_characters": [
+    "enemy_characters": [
         {
             "enemy_template": "knight1",
             "position": ["8", "10"],
@@ -41,6 +41,16 @@
             "status": "none",
             "full_hp": "false",
             "hp_modifier": "0"
+        },
+
+        {
+            "enemy_template": "knight1",
+            "position": ["12", "3"],
+            "behaviour": "none",
+            "special": "none",
+            "status": "none",
+            "full_hp": "true",
+            "hp_modifier": "0"
         }
     ],
 
@@ -48,7 +58,7 @@
 
     },
 
-    "win_conditions": "rout",
+    "win_conditions": ["rout"],
 
     "lose_conditions": ["lose_all"]
 

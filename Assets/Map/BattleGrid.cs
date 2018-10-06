@@ -43,7 +43,7 @@ public class BattleGrid : MonoBehaviour {
 		//createTestCharacter();
 		
 		GameObject cursorTemp = Instantiate(cursorPrefab, transform.position, Quaternion.identity, transform);
-		cursorTemp.GetComponent<Cursor>().setup(sizeX / 2, sizeY / 2, this);
+		cursorTemp.GetComponent<MapCursor>().setup(sizeX / 2, sizeY / 2, this);
 
 	}
 
