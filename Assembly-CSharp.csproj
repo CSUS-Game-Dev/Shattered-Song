@@ -65,10 +65,11 @@
      <Compile Include="Assets\Characters\Scripts\Skills\SkillList.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\CharacterStats.cs" />
      <Compile Include="Assets\Characters\Scripts\Stats\Stat.cs" />
-     <Compile Include="Assets\Controller.cs" />
+     <Compile Include="Assets\Cursors\Controller.cs" />
      <Compile Include="Assets\Cursors\Cursor.cs" />
      <Compile Include="Assets\Cursors\DialogueCursor.cs" />
-     <Compile Include="Assets\Cursors\InputManager.cs" />
+     <Compile Include="Assets\Cursors\IControllable.cs" />
+     <Compile Include="Assets\Cursors\ICursor.cs" />
      <Compile Include="Assets\Cursors\MapCursor.cs" />
      <Compile Include="Assets\Cursors\MenuCursor.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
