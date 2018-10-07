@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapCursor : MonoBehaviour, Cursor {
+public class MapCursor : MonoBehaviour, Cursor
+{
 
 	//We might want to change this so that this is the manager for ALL cursors throughout the game.
 	//Keep multiple saved and use them as they are made the active cursor
@@ -30,15 +31,18 @@ public class MapCursor : MonoBehaviour, Cursor {
 	private GridSpace originalPosition;
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		cursorInput();
 
-		if(mainCam != null){
+		if(mainCam != null)
+        {
 			mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, new Vector3(transform.position.x, transform.position.y, -10), camLerpSpeed);
 		}
 	}
 
-	public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid){
+	public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid)
+    {
 		this.battleGrid = battleGrid;
 		gridTargeting = battleGrid.gridTargeting;
 
@@ -53,74 +57,95 @@ public class MapCursor : MonoBehaviour, Cursor {
 		mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 	}
 
-	private void cursorInput(){
-		if(Input.GetKeyDown(KeyCode.W)){
+	private void cursorInput()
+    {
+		if(Input.GetKeyDown(KeyCode.W))
+        {
 			move(GridDirection.UP);
 		}
-		if(Input.GetKeyDown(KeyCode.S)){
+		if(Input.GetKeyDown(KeyCode.S))
+        {
 			move(GridDirection.DOWN);
 		}
-		if(Input.GetKeyDown(KeyCode.A)){
+		if(Input.GetKeyDown(KeyCode.A))
+        {
 			move(GridDirection.LEFT);
 		}
-		if(Input.GetKeyDown(KeyCode.D)){
+		if(Input.GetKeyDown(KeyCode.D))
+        {
 			move(GridDirection.RIGHT);
 		}
 
 		//Handles when the buttons are held down - the cursor should move faster automatically
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W)){
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W))
+        {
 			holdingTime += Time.deltaTime;
-			if(holdingTime > timeToHold){
+			if(holdingTime > timeToHold)
+            {
 				buttonHeld = true;
-				if(Input.GetKey(KeyCode.W)){
+				if(Input.GetKey(KeyCode.W))
+                {
 					move(GridDirection.UP);
 				}
-				if(Input.GetKey(KeyCode.S)){
+				if(Input.GetKey(KeyCode.S))
+                {
 					move(GridDirection.DOWN);
 				}
-				if(Input.GetKey(KeyCode.A)){
+				if(Input.GetKey(KeyCode.A))
+                {
 					move(GridDirection.LEFT);
 				}
-				if(Input.GetKey(KeyCode.D)){
+				if(Input.GetKey(KeyCode.D))
+                {
 					move(GridDirection.RIGHT);
 				}
 
 				holdingTime = 0f;
 			}
 
-			if(buttonHeld){
+			if(buttonHeld)
+            {
 				holdingTime += Time.deltaTime;
-				if(holdingTime >= timeBetweenSteps){
-					if(Input.GetKey(KeyCode.W)){
+				if(holdingTime >= timeBetweenSteps)
+                {
+					if(Input.GetKey(KeyCode.W))
+                    {
 						move(GridDirection.UP);
 					}
-					if(Input.GetKey(KeyCode.S)){
+					if(Input.GetKey(KeyCode.S))
+                    {
 						move(GridDirection.DOWN);
 					}
-					if(Input.GetKey(KeyCode.A)){
+					if(Input.GetKey(KeyCode.A))
+                    {
 						move(GridDirection.LEFT);
 					}
-					if(Input.GetKey(KeyCode.D)){
+					if(Input.GetKey(KeyCode.D))
+                    {
 						move(GridDirection.RIGHT);
 					}
 					holdingTime = 0f;
 				}
 			}
 		}
-		else{
+		else
+        {
 			holdingTime = 0f;
 			buttonHeld = false;
 		}
 
-		if(Input.GetKeyDown(KeyCode.Space)){
-			if(battleGrid.grid[posX, posY].isOccupied && !hasCharacterSelected){
+		if(Input.GetKeyDown(KeyCode.Space))
+        {
+			if(battleGrid.grid[posX, posY].isOccupied && !hasCharacterSelected)
+            {
 				battleGrid.grid[posX, posY].selectCharacter();
 				originalPosition = battleGrid.grid[posX, posY];
 				characterSelected = battleGrid.grid[posX, posY].occupant;
 				hasCharacterSelected = true;
 				
 			}
-			else if(hasCharacterSelected && !battleGrid.grid[posX, posY].isOccupied){
+			else if(hasCharacterSelected && !battleGrid.grid[posX, posY].isOccupied)
+            {
 				hasCharacterSelected = false;
 				characterSelected.moveTo(battleGrid.grid[posX, posY].transform, 0.7f);
 
@@ -131,51 +156,63 @@ public class MapCursor : MonoBehaviour, Cursor {
 				originalPosition = null;
 				characterSelected = null;				
 			}
-			else{
+			else
+            {
 				//battleGrid.targetPoint(posX, posY);
 				battleGrid.targetSpaces(gridTargeting.getSpace(posX, posY));
 			}
 		}
 
-		if(Input.GetKeyDown(KeyCode.Z)){
+		if(Input.GetKeyDown(KeyCode.Z))
+        {
 			battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 2));
 		}
 
-		if(Input.GetKeyDown(KeyCode.X)){
+		if(Input.GetKeyDown(KeyCode.X))
+        {
 			battleGrid.targetSpaces(gridTargeting.getSpacesInSquare(posX, posY, 2));
 		}
 
-		if(Input.GetKeyDown(KeyCode.C)){
+		if(Input.GetKeyDown(KeyCode.C))
+        {
 			battleGrid.targetSpaces(gridTargeting.getSpacesInPlusExclusive(posX, posY, 3));
 		}
 
-		if(Input.GetKeyDown(KeyCode.V)){
+		if(Input.GetKeyDown(KeyCode.V))
+        {
 			battleGrid.targetSpaces(gridTargeting.getSpacesInCross(posX, posY, 4));
 		}
 
-		if(Input.GetKeyDown(KeyCode.B)){
+		if(Input.GetKeyDown(KeyCode.B))
+        {
 			battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 3));
 		}
 
-		if(Input.GetKeyDown(KeyCode.G)){
+		if(Input.GetKeyDown(KeyCode.G))
+        {
 			battleGrid.displaySpaces(battleGrid.gridPathing.findMovePathsSimple(5, battleGrid.grid[posX, posY]));
 		}
 	}
 
-	private void move(GridDirection direction){
+	private void move(GridDirection direction)
+    {
 		int moveX = 0;
 		int moveY = 0;
 
-		if(direction == GridDirection.UP){
+		if(direction == GridDirection.UP)
+        {
 			moveY = 1;
 		}
-		if(direction == GridDirection.DOWN){
+		if(direction == GridDirection.DOWN)
+        {
 			moveY = -1;
 		}
-		if(direction == GridDirection.LEFT){
+		if(direction == GridDirection.LEFT)
+        {
 			moveX = -1;
 		}
-		if(direction == GridDirection.RIGHT){
+		if(direction == GridDirection.RIGHT)
+        {
 			moveX= 1;
 		}
 
@@ -183,7 +220,8 @@ public class MapCursor : MonoBehaviour, Cursor {
 		int newX = posX + moveX;
 		int newY = posY + moveY;
 
-		if(battleGrid.spaceExistsInGrid(newX, newY)){
+		if(battleGrid.spaceExistsInGrid(newX, newY))
+        {
 			posX = newX;
 			posY = newY;
 
@@ -191,19 +229,23 @@ public class MapCursor : MonoBehaviour, Cursor {
 		}
 	}
 
-	public void setActive(bool b){
+	public void setActive(bool b)
+    {
 
 	}
 
-	public void moveDirection(Direction d){
+	public void moveDirection(Direction d)
+    {
 
 	}
 
-	public void hover(MenuObject mo){
+	public void hover(MenuObject mo)
+    {
 
 	}
 	 
-	public void select(MenuObject mo){
+	public void select(MenuObject mo)
+    {
 
 	}
 
