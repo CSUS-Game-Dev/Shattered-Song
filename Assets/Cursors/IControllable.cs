@@ -4,7 +4,6 @@ using UnityEngine;
 
 public interface IControllable
 {
-    void takeInput(Controller.InputType input);
-    void focus();
-    void unfocus();
+    //void takeInput(InputType input);
+    void setActiveCursor(ICursor cursor);
 }

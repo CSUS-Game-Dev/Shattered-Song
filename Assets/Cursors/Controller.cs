@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public enum InputType { Left, Right, Up, Down, Confirm, Back }
     public static Controller instance = null;
     private IControllable activeListener;
-    private Stack<IControllable> listeners;
+    private Stack<ICursor> listeners;
 
 
     // Use this for initialization
@@ -17,7 +16,7 @@ public class Controller : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            listeners = new Stack<IControllable>();
+            listeners = new Stack<ICursor>();
         }
         else { Destroy(gameObject, 0f); }
     }
@@ -39,7 +38,7 @@ public class Controller : MonoBehaviour
                                                   || Input.GetKeyDown(KeyCode.Z)) passInput(InputType.Up);
     }
 
-    void addListener(IControllable listener)
+    void addListener(ICursor listener)
     {
         if (listener != null)
         {
@@ -52,6 +51,8 @@ public class Controller : MonoBehaviour
         //Deals with null members on the top of the stack
         while (listeners.Peek() == null || listeners.Count == 0) { listeners.Pop(); }
         //Passes Input to the top of the stack
-        if (listeners.Count > 0) { listeners.Peek().takeInput(input); }
+        if (listeners.Count > 0) { listeners.Peek().processInput(input); }
     }
 }
+
+public enum InputType { Left, Right, Up, Down, Confirm, Back }

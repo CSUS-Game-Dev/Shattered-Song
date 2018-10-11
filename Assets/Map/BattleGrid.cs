@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleGrid : MonoBehaviour
+public class BattleGrid : MonoBehaviour, IControllable
 {
 
     //There are 100 pixels to 1 Unity "unit"
@@ -18,6 +18,9 @@ public class BattleGrid : MonoBehaviour
     public GameObject gridSpacePrefab;
 
     public GameObject cursorPrefab;
+    public GameObject targetCursorPrefab;
+    public GameObject directionalCursorPrefab;
+    private ICursor activeCursor;
 
     public GameObject testCharacterPrefab;
 
@@ -46,7 +49,7 @@ public class BattleGrid : MonoBehaviour
         //createTestCharacter();
 
         GameObject cursorTemp = Instantiate(cursorPrefab, transform.position, Quaternion.identity, transform);
-        cursorTemp.GetComponent<ICursor>().setup(sizeX / 2, sizeY / 2, this);
+        //cursorTemp.GetComponent<ICursor>().setup(sizeX / 2, sizeY / 2, this);
 
     }
 

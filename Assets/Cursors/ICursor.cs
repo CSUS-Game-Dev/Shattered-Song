@@ -4,7 +4,9 @@ using UnityEngine;
 
 public interface ICursor
 {
-    void setActive(bool active);
+    void processInput(InputType input);
     bool getActive();
-    void takeAction(Controller.InputType input);
+    void setActive(bool active);
+    IControllable getSubject();
+    void setSubject(IControllable subject);
 }
