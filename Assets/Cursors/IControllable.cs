@@ -4,6 +4,5 @@ using UnityEngine;
 
 public interface IControllable
 {
-    //void takeInput(InputType input);
     void setActiveCursor(ICursor cursor);
 }

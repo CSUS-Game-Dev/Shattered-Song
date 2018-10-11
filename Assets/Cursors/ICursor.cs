@@ -8,5 +8,6 @@ public interface ICursor
     bool getActive();
     void setActive(bool active);
     IControllable getSubject();
-    void setSubject(IControllable subject);
+    //This last method is probably not necessary
+    //void setSubject(IControllable subject);
 }

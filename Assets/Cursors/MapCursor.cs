@@ -78,7 +78,7 @@ public class MapCursor : MonoBehaviour, ICursor
         }
     }
 
-    void processInput(InputType input)
+    public void processInput(InputType input)
     {
         switch (input)
         {
@@ -92,8 +92,7 @@ public class MapCursor : MonoBehaviour, ICursor
                 break;
         }
     }
-    bool getActive() { }
-    void setActive(bool active) { }
-    IControllable getSubject() { }
-    void setSubject(IControllable subject) { }
+    public bool getActive() { return active; }
+    public void setActive(bool active) { }
+    public IControllable getSubject() { return battleGrid; }
 }

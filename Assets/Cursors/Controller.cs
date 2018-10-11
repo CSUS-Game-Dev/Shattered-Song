@@ -38,12 +38,17 @@ public class Controller : MonoBehaviour
                                                   || Input.GetKeyDown(KeyCode.Z)) passInput(InputType.Up);
     }
 
-    void addListener(ICursor listener)
+    public void addListener(ICursor listener)
     {
         if (listener != null)
         {
             listeners.Push(listener);
         }
+    }
+
+    public void removeListener(ICursor listener)
+    {
+        if (listeners.Peek().Equals(listener)) { listeners.Pop(); }
     }
 
     void passInput(InputType input)

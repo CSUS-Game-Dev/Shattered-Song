@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Cursor{
+public interface Cursor
+{
 
-	void setActive(bool active);
+    void setActive(bool active);
 
-	void moveDirection(Direction input);
+    //void moveDirection(Direction input);
 
-	void hover(MenuObject menuObject);
+    void hover(MenuObject menuObject);
 
-	void select(MenuObject menuObject);
+    void select(MenuObject menuObject);
 }
 
-public enum Direction {UP, DOWN, LEFT, RIGHT}
+//public enum Direction {UP, DOWN, LEFT, RIGHT}

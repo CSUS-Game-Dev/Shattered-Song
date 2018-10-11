@@ -49,7 +49,9 @@ public class BattleGrid : MonoBehaviour, IControllable
         //createTestCharacter();
 
         GameObject cursorTemp = Instantiate(cursorPrefab, transform.position, Quaternion.identity, transform);
-        //cursorTemp.GetComponent<ICursor>().setup(sizeX / 2, sizeY / 2, this);
+        MapCursor cursor = cursorTemp.GetComponent<MapCursor>();
+        cursor.setup(sizeX / 2, sizeY / 2, this);
+        Controller.instance.addListener(cursor);
 
     }
 
@@ -185,7 +187,28 @@ public class BattleGrid : MonoBehaviour, IControllable
         return dir;
     }
 
+    public void setActiveCursor(ICursor c)
+    {
+        activeCursor = c;
+    }
+
+    public void createCursor(CursorType cursorType)
+    {
+        switch (cursorType)
+        {
+            case CursorType.DEFAULT:
+                break;
+            case CursorType.DIRECTIONAL:
+                break;
+            case CursorType.TARGET:
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 
+public enum CursorType { DEFAULT, DIRECTIONAL, TARGET }
 public enum GridDirection { UP, DOWN, LEFT, RIGHT, UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT }
 public enum TargetType { SPACE, LINE, SQUARE, CIRCLE, PLUS, CROSS }
