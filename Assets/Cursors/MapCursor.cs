@@ -2,209 +2,251 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapCursor : MonoBehaviour, Cursor {
+public class MapCursor : MonoBehaviour, Cursor, ICursor
+{
 
-	//We might want to change this so that this is the manager for ALL cursors throughout the game.
-	//Keep multiple saved and use them as they are made the active cursor
+    //We might want to change this so that this is the manager for ALL cursors throughout the game.
+    //Keep multiple saved and use them as they are made the active cursor
 
-	private Camera mainCam;
+    private Camera mainCam;
 
-	public float camLerpSpeed;
+    public float camLerpSpeed;
 
-	public BattleGrid battleGrid;
-	
-	private GridTargeting gridTargeting;
+    public BattleGrid battleGrid;
 
-	private int gridMaxX, gridMaxY;
+    private GridTargeting gridTargeting;
 
-	private int posX = 0;
-	private int posY = 0;
+    private int gridMaxX, gridMaxY;
 
-	private float timeToHold = 0.4f;
-	private float timeBetweenSteps = 0.2f;
-	private float holdingTime = 0f;
-	private bool buttonHeld = false;
+    private int posX = 0;
+    private int posY = 0;
 
-	private bool hasCharacterSelected;
-	private Character characterSelected;
-	private GridSpace originalPosition;
-	
-	// Update is called once per frame
-	void Update () {
-		cursorInput();
+    private float timeToHold = 0.4f;
+    private float timeBetweenSteps = 0.2f;
+    private float holdingTime = 0f;
+    private bool buttonHeld = false;
 
-		if(mainCam != null){
-			mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, new Vector3(transform.position.x, transform.position.y, -10), camLerpSpeed);
-		}
-	}
+    private bool hasCharacterSelected;
+    private Character characterSelected;
+    private GridSpace originalPosition;
 
-	public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid){
-		this.battleGrid = battleGrid;
-		gridTargeting = battleGrid.gridTargeting;
+    // Update is called once per frame
+    void Update()
+    {
+        cursorInput();
 
-		gridMaxX = battleGrid.grid.GetLength(0);
-		gridMaxY = battleGrid.grid.GetLength(1);
+        if (mainCam != null)
+        {
+            mainCam.transform.position = Vector3.Lerp(mainCam.transform.position, new Vector3(transform.position.x, transform.position.y, -10), camLerpSpeed);
+        }
+    }
 
-		posX = gridPosX;
-		posY = gridPosY;
+    public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid)
+    {
+        this.battleGrid = battleGrid;
+        gridTargeting = battleGrid.gridTargeting;
 
-		transform.position = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -.5f);
+        gridMaxX = battleGrid.grid.GetLength(0);
+        gridMaxY = battleGrid.grid.GetLength(1);
 
-		mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
-	}
+        posX = gridPosX;
+        posY = gridPosY;
 
-	private void cursorInput(){
-		if(Input.GetKeyDown(KeyCode.W)){
-			move(GridDirection.UP);
-		}
-		if(Input.GetKeyDown(KeyCode.S)){
-			move(GridDirection.DOWN);
-		}
-		if(Input.GetKeyDown(KeyCode.A)){
-			move(GridDirection.LEFT);
-		}
-		if(Input.GetKeyDown(KeyCode.D)){
-			move(GridDirection.RIGHT);
-		}
+        transform.position = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -.5f);
 
-		//Handles when the buttons are held down - the cursor should move faster automatically
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W)){
-			holdingTime += Time.deltaTime;
-			if(holdingTime > timeToHold){
-				buttonHeld = true;
-				if(Input.GetKey(KeyCode.W)){
-					move(GridDirection.UP);
-				}
-				if(Input.GetKey(KeyCode.S)){
-					move(GridDirection.DOWN);
-				}
-				if(Input.GetKey(KeyCode.A)){
-					move(GridDirection.LEFT);
-				}
-				if(Input.GetKey(KeyCode.D)){
-					move(GridDirection.RIGHT);
-				}
+        mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
+    }
 
-				holdingTime = 0f;
-			}
+    private void cursorInput()
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            move(GridDirection.UP);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            move(GridDirection.DOWN);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            move(GridDirection.LEFT);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            move(GridDirection.RIGHT);
+        }
 
-			if(buttonHeld){
-				holdingTime += Time.deltaTime;
-				if(holdingTime >= timeBetweenSteps){
-					if(Input.GetKey(KeyCode.W)){
-						move(GridDirection.UP);
-					}
-					if(Input.GetKey(KeyCode.S)){
-						move(GridDirection.DOWN);
-					}
-					if(Input.GetKey(KeyCode.A)){
-						move(GridDirection.LEFT);
-					}
-					if(Input.GetKey(KeyCode.D)){
-						move(GridDirection.RIGHT);
-					}
-					holdingTime = 0f;
-				}
-			}
-		}
-		else{
-			holdingTime = 0f;
-			buttonHeld = false;
-		}
+        //Handles when the buttons are held down - the cursor should move faster automatically
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W))
+        {
+            holdingTime += Time.deltaTime;
+            if (holdingTime > timeToHold)
+            {
+                buttonHeld = true;
+                if (Input.GetKey(KeyCode.W))
+                {
+                    move(GridDirection.UP);
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    move(GridDirection.DOWN);
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    move(GridDirection.LEFT);
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    move(GridDirection.RIGHT);
+                }
 
-		if(Input.GetKeyDown(KeyCode.Space)){
-			if(battleGrid.grid[posX, posY].isOccupied && !hasCharacterSelected){
-				battleGrid.grid[posX, posY].selectCharacter();
-				originalPosition = battleGrid.grid[posX, posY];
-				characterSelected = battleGrid.grid[posX, posY].occupant;
-				hasCharacterSelected = true;
-				
-			}
-			else if(hasCharacterSelected && !battleGrid.grid[posX, posY].isOccupied){
-				hasCharacterSelected = false;
-				characterSelected.moveTo(battleGrid.grid[posX, posY].transform, 0.7f);
+                holdingTime = 0f;
+            }
 
-				battleGrid.grid[posX, posY].isOccupied = true;
-				battleGrid.grid[posX, posY].occupant = characterSelected;
+            if (buttonHeld)
+            {
+                holdingTime += Time.deltaTime;
+                if (holdingTime >= timeBetweenSteps)
+                {
+                    if (Input.GetKey(KeyCode.W))
+                    {
+                        move(GridDirection.UP);
+                    }
+                    if (Input.GetKey(KeyCode.S))
+                    {
+                        move(GridDirection.DOWN);
+                    }
+                    if (Input.GetKey(KeyCode.A))
+                    {
+                        move(GridDirection.LEFT);
+                    }
+                    if (Input.GetKey(KeyCode.D))
+                    {
+                        move(GridDirection.RIGHT);
+                    }
+                    holdingTime = 0f;
+                }
+            }
+        }
+        else
+        {
+            holdingTime = 0f;
+            buttonHeld = false;
+        }
 
-				originalPosition.isOccupied = false;
-				originalPosition = null;
-				characterSelected = null;				
-			}
-			else{
-				//battleGrid.targetPoint(posX, posY);
-				battleGrid.targetSpaces(gridTargeting.getSpace(posX, posY));
-			}
-		}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (battleGrid.grid[posX, posY].isOccupied && !hasCharacterSelected)
+            {
+                battleGrid.grid[posX, posY].selectCharacter();
+                originalPosition = battleGrid.grid[posX, posY];
+                characterSelected = battleGrid.grid[posX, posY].occupant;
+                hasCharacterSelected = true;
 
-		if(Input.GetKeyDown(KeyCode.Z)){
-			battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 2));
-		}
+            }
+            else if (hasCharacterSelected && !battleGrid.grid[posX, posY].isOccupied)
+            {
+                hasCharacterSelected = false;
+                characterSelected.moveTo(battleGrid.grid[posX, posY].transform, 0.7f);
 
-		if(Input.GetKeyDown(KeyCode.X)){
-			battleGrid.targetSpaces(gridTargeting.getSpacesInSquare(posX, posY, 2));
-		}
+                battleGrid.grid[posX, posY].isOccupied = true;
+                battleGrid.grid[posX, posY].occupant = characterSelected;
 
-		if(Input.GetKeyDown(KeyCode.C)){
-			battleGrid.targetSpaces(gridTargeting.getSpacesInPlusExclusive(posX, posY, 3));
-		}
+                originalPosition.isOccupied = false;
+                originalPosition = null;
+                characterSelected = null;
+            }
+            else
+            {
+                //battleGrid.targetPoint(posX, posY);
+                battleGrid.targetSpaces(gridTargeting.getSpace(posX, posY));
+            }
+        }
 
-		if(Input.GetKeyDown(KeyCode.V)){
-			battleGrid.targetSpaces(gridTargeting.getSpacesInCross(posX, posY, 4));
-		}
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 2));
+        }
 
-		if(Input.GetKeyDown(KeyCode.B)){
-			battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 3));
-		}
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            battleGrid.targetSpaces(gridTargeting.getSpacesInSquare(posX, posY, 2));
+        }
 
-		if(Input.GetKeyDown(KeyCode.G)){
-			battleGrid.displaySpaces(battleGrid.gridPathing.findMovePathsSimple(5, battleGrid.grid[posX, posY]));
-		}
-	}
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            battleGrid.targetSpaces(gridTargeting.getSpacesInPlusExclusive(posX, posY, 3));
+        }
 
-	private void move(GridDirection direction){
-		int moveX = 0;
-		int moveY = 0;
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            battleGrid.targetSpaces(gridTargeting.getSpacesInCross(posX, posY, 4));
+        }
 
-		if(direction == GridDirection.UP){
-			moveY = 1;
-		}
-		if(direction == GridDirection.DOWN){
-			moveY = -1;
-		}
-		if(direction == GridDirection.LEFT){
-			moveX = -1;
-		}
-		if(direction == GridDirection.RIGHT){
-			moveX= 1;
-		}
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            battleGrid.targetSpaces(gridTargeting.getSpacesWithinRange(posX, posY, 3));
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            battleGrid.displaySpaces(battleGrid.gridPathing.findMovePathsSimple(5, battleGrid.grid[posX, posY]));
+        }
+    }
+
+    private void move(GridDirection direction)
+    {
+        int moveX = 0;
+        int moveY = 0;
+
+        if (direction == GridDirection.UP)
+        {
+            moveY = 1;
+        }
+        if (direction == GridDirection.DOWN)
+        {
+            moveY = -1;
+        }
+        if (direction == GridDirection.LEFT)
+        {
+            moveX = -1;
+        }
+        if (direction == GridDirection.RIGHT)
+        {
+            moveX = 1;
+        }
 
 
-		int newX = posX + moveX;
-		int newY = posY + moveY;
+        int newX = posX + moveX;
+        int newY = posY + moveY;
 
-		if(battleGrid.spaceExistsInGrid(newX, newY)){
-			posX = newX;
-			posY = newY;
+        if (battleGrid.spaceExistsInGrid(newX, newY))
+        {
+            posX = newX;
+            posY = newY;
 
-			transform.position = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -.5f);
-		}
-	}
+            transform.position = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -.5f);
+        }
+    }
 
-	public void setActive(bool b){
+    public void setActive(bool b)
+    {
 
-	}
+    }
 
-	public void moveDirection(Direction d){
+    public void moveDirection(Direction d)
+    {
 
-	}
+    }
 
-	public void hover(MenuObject mo){
+    public void hover(MenuObject mo)
+    {
 
-	}
-	 
-	public void select(MenuObject mo){
+    }
 
-	}
+    public void select(MenuObject mo)
+    {
+
+    }
 
 }
