@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraManager.cs" />
      <Compile Include="Assets\Characters\Scripts\Character\Character.cs" />
      <Compile Include="Assets\Characters\Scripts\Character\EnemyCharacter.cs" />
      <Compile Include="Assets\Characters\Scripts\Character\PlayerCharacter.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Cursors\ICursor.cs" />
      <Compile Include="Assets\Cursors\MapCursor.cs" />
      <Compile Include="Assets\Cursors\MenuCursor.cs" />
+     <Compile Include="Assets\Cursors\TargetCursor.cs" />
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />

@@ -52,7 +52,6 @@ public class BattleGrid : MonoBehaviour, IControllable
         MapCursor cursor = cursorTemp.GetComponent<MapCursor>();
         cursor.setup(sizeX / 2, sizeY / 2, this);
         Controller.instance.addListener(cursor);
-
     }
 
     public void createTestGrid(int sizeX, int sizeY)

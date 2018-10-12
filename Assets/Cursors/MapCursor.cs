@@ -40,10 +40,10 @@ public class MapCursor : MonoBehaviour, ICursor
 
         // mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
 
-        active = true;
+        setActive(true);
     }
 
-    private void move(InputType direction)
+    protected virtual void move(InputType direction)
     {
         int moveX = 0;
         int moveY = 0;
@@ -92,7 +92,15 @@ public class MapCursor : MonoBehaviour, ICursor
                 break;
         }
     }
-    public bool getActive() { return active; }
-    public void setActive(bool active) { }
+    public bool getActive()
+    {
+        return active;
+    }
+
+    public void setActive(bool active)
+    {
+        this.active = active;
+        CameraManager.instance.follow(gameObject);
+    }
     public IControllable getSubject() { return battleGrid; }
 }
