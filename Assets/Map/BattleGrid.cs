@@ -138,6 +138,11 @@ public class BattleGrid : MonoBehaviour, IControllable
 
     }
 
+    public List<GridSpace> getSpaces(GridSpace origin, TargetType shape, bool inclusive = true, GridDirection dir = GridDirection.NONE)
+    {
+
+    }
+
     public bool spaceExistsInGrid(int targetX, int targetY)
     {
 
@@ -209,5 +214,5 @@ public class BattleGrid : MonoBehaviour, IControllable
 }
 
 public enum CursorType { DEFAULT, DIRECTIONAL, TARGET }
-public enum GridDirection { UP, DOWN, LEFT, RIGHT, UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT }
+public enum GridDirection { UP, DOWN, LEFT, RIGHT, UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT, NONE }
 public enum TargetType { SPACE, LINE, SQUARE, CIRCLE, PLUS, CROSS }

@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class TargetCursor : MonoBehaviour, ICursor
 {
-
-    //We might want to change this so that this is the manager for ALL cursors throughout the game.
-    //Keep multiple saved and use them as they are made the active cursor
-
     private Camera mainCam;
 
     public float camLerpSpeed;
 
     public BattleGrid battleGrid;
     private GridTargeting gridTargeting;
+
+    private List<GridSpace> canMove;
 
     private int posX = 0;
     private int posY = 0;
@@ -28,7 +26,7 @@ public class TargetCursor : MonoBehaviour, ICursor
 
     // Update is called once per frame
 
-    public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid)
+    public void setup(int gridPosX, int gridPosY, BattleGrid battleGrid, TargetType targetType, int targetSize, int range)
     {
         this.battleGrid = battleGrid;
         gridTargeting = battleGrid.gridTargeting;
@@ -37,10 +35,9 @@ public class TargetCursor : MonoBehaviour, ICursor
         posY = gridPosY;
 
         transform.position = battleGrid.grid[posX, posY].transform.position + new Vector3(0f, 0f, -.5f);
-
-        // mainCam = GameObject.Find("Main Camera").GetComponent<Camera>();
-
         active = true;
+
+        //canMove = battleGrid.
     }
 
     protected virtual void move(InputType direction)

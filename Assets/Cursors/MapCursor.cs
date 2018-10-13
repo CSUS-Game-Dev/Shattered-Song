@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MapCursor : MonoBehaviour, ICursor
 {
-
-    //We might want to change this so that this is the manager for ALL cursors throughout the game.
-    //Keep multiple saved and use them as they are made the active cursor
-
     private Camera mainCam;
 
     public float camLerpSpeed;

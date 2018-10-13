@@ -2,9 +2,8 @@
 -target:library
 -nowarn:0169
 -langversion:4
--out:'Temp/Assembly-CSharp-Editor.dll'
+-out:'Temp/UnityEditor.StandardEvents.dll'
 -nostdlib
--r:'Library/ScriptAssemblies/Assembly-CSharp.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.ARModule.dll'
@@ -68,12 +67,6 @@
 -r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEngine/UnityEngine.XRModule.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Managed/UnityEditor.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Managed/Unity.Locator.dll'
--r:'Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll'
--r:'Library/ScriptAssemblies/Assembly-CSharp-Editor-firstpass.dll'
--r:'Library/ScriptAssemblies/UnityEditor.StandardEvents.dll'
--r:'Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll'
--r:'Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll'
--r:'Library/ScriptAssemblies/Unity.TextMeshPro.dll'
 -r:'Library/FacebookSDK/Facebook.Unity.Settings.dll'
 -r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll'
 -r:'/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll'
@@ -128,7 +121,6 @@
 -define:UNITY_2018
 -define:PLATFORM_ARCH_64
 -define:UNITY_64
--define:UNITY_ANALYTICS
 -define:ENABLE_AUDIO
 -define:ENABLE_CACHING
 -define:ENABLE_CLOTH
@@ -211,5 +203,5 @@
 -define:ENABLE_UNITY_COLLECTIONS_CHECKS
 -define:ENABLE_BURST_AOT
 -define:UNITY_TEAM_LICENSE
-'Assets/JSON/Editor/JSONChecker.cs'
+'/Users/bryce/Library/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/Editor/Importer.cs'
 -lib:'/Applications/Unity/Unity.app/Contents/MonoBleedingEdge/lib/mono/2.0-api'

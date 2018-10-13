@@ -2,235 +2,366 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridTargeting{
+public class GridTargeting
+{
 
-	private BattleGrid grid;
+    private BattleGrid grid;
 
-	public GridTargeting(BattleGrid grid){
-		this.grid = grid;
-	}
+    //CONSTRUCTOR
+    public GridTargeting(BattleGrid grid)
+    {
+        this.grid = grid;
+    }
 
+    //Some targeting paradigms NEED a range or a direction.
+    //If they are not passed the correct values, they will return empty
+    public List<GridSpace> getSpaces
+        (int targetX, int targetY, TargetType targetType,
+        int range = 0, bool inclusive = true, GridDirection dir = GridDirection.NONE)
+    {
+        switch (targetType)
+        {
+            case TargetType.SPACE:
+                List<GridSpace> sqr = new List<GridSpace>();
+                sqr.Add(getSpace(targetX, targetY));
+                return sqr;
+            case TargetType.LINE:
+                List<GridSpace> line = new List<GridSpace>();
+                if (dir == GridDirection.NONE) { return line; }
+                if (inclusive)
+                {
+                    return getSpacesInLine(targetX, targetY, range, dir);
+                }
+                else
+                {
+                    return getSpacesInLineExclusive(targetX, targetY, range, dir);
+                }
+            case TargetType.PLUS:
+                if (inclusive)
+                {
+                    return getSpacesInPlus(targetX, targetY, range);
+                }
+                else
+                {
+                    return getSpacesInPlusExclusive(targetX, targetY, range);
+                }
+            case TargetType.CROSS:
+                if (inclusive)
+                {
+                    return getSpacesInCross(targetX, targetY, range);
+                }
+                else
+                {
+                    return getSpacesInCrossExclusive(targetX, targetY, range);
+                }
+            case TargetType.CIRCLE:
+                if (inclusive)
+                {
+                    return getSpacesWithinRange(targetX, targetY, range);
+                }
+                else
+                {
+                    return getSpacesWithinRangeExclusive(targetX, targetY, range);
+                }
+            case TargetType.SQUARE:
+                if (inclusive)
+                {
+                    return getSpacesInSquare(targetX, targetY, range);
+                }
+                else
+                {
+                    return getSpacesInSquareExclusive(targetX, targetY, range);
+                }
+            default:
+                return new List<GridSpace>();
+        }
+    }
 
+    private GridSpace getSpace(int targetX, int targetY)
+    {
+        GridSpace result = null;
 
-	public GridSpace getSpace(int targetX, int targetY){
-		GridSpace result = null;
+        if (grid.spaceExistsInGrid(targetX, targetY))
+        {
+            result = grid.grid[targetX, targetY];
+        }
 
-		if(grid.spaceExistsInGrid(targetX, targetY)){
-			result = grid.grid[targetX, targetY];
-		}
+        return result;
+    }
 
-		return result;
-	}
+    //Gets all spaces in a line from a target point in a direction, including the target point
+    // --x--
+    // --x--
+    // --x--
+    // -----
+    // -----
+    private List<GridSpace> getSpacesInLine(int targetX, int targetY, int range, GridDirection d)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
 
-	//Gets all spaces in a line from a target point in a direction, including the target point
-	// --x--
-	// --x--
-	// --x--
-	// -----
-	// -----
-	public List<GridSpace> getSpacesInLine(int targetX, int targetY, int range, GridDirection d){
-		List<GridSpace> spaces = new List<GridSpace>();
+        if (range <= 0)
+        {
+            return spaces;
+        }
 
-		if(range <= 0){
-			return spaces;
-		}
+        int currentX = targetX;
+        int currentY = targetY;
 
-		int currentX = targetX;
-		int currentY = targetY;
+        Vector2 dir = grid.gridDirToVec2(d);
 
-		Vector2 dir = grid.gridDirToVec2(d);
+        for (int i = 0; i <= range; i++)
+        {
+            if (!grid.spaceExistsInGrid(currentX, currentY))
+            {
+                break;
+            }
 
-		for(int i = 0; i <= range; i++){
-			if(!grid.spaceExistsInGrid(currentX, currentY)){
-				break;
-			}
+            spaces.Add(grid.grid[currentX, currentY]);
 
-			spaces.Add(grid.grid[currentX, currentY]);
+            currentX += (int)dir.x;
+            currentY += (int)dir.y;
+        }
 
-			currentX += (int)dir.x;
-			currentY += (int)dir.y;
-		}
+        return spaces;
+    }
 
-		return spaces;
-	}
+    // --x--
+    // --x--
+    // --o--
+    // -----
+    // -----
+    private List<GridSpace> getSpacesInLineExclusive(int targetX, int targetY, int range, GridDirection d)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
 
-	// --x--
-	// --x--
-	// --o--
-	// -----
-	// -----
-	public List<GridSpace> getSpacesInLineExclusive(int targetX, int targetY, int range, GridDirection d){
-		List<GridSpace> spaces = new List<GridSpace>();
+        if (range <= 0)
+        {
+            return spaces;
+        }
 
-		if(range <= 0){
-			return spaces;
-		}
+        int currentX = targetX;
+        int currentY = targetY;
 
-		int currentX = targetX;
-		int currentY = targetY;
+        Vector2 dir = grid.gridDirToVec2(d);
 
-		Vector2 dir = grid.gridDirToVec2(d);
+        for (int i = 0; i <= range; i++)
+        {
+            if (!grid.spaceExistsInGrid(currentX, currentY))
+            {
+                break;
+            }
 
-		for(int i = 0; i <= range; i++){
-			if(!grid.spaceExistsInGrid(currentX, currentY)){
-				break;
-			}
+            if (!(currentX == targetX && currentY == targetY))
+            {
+                spaces.Add(grid.grid[currentX, currentY]);
+            }
 
-			if(!(currentX == targetX && currentY == targetY)){
-				spaces.Add(grid.grid[currentX, currentY]);
-			}
+            currentX += (int)dir.x;
+            currentY += (int)dir.y;
+        }
 
-			currentX += (int)dir.x;
-			currentY += (int)dir.y;
-		}
+        return spaces;
+    }
 
-		return spaces;
-	}
-	
-	//Gets all of the spaces in a box shape  around a point, including the point itself
-	// -----
-	// -xxx-
-	// -xxx-
-	// -xxx-
-	// -----
-	public List<GridSpace> getSpacesInSquare(int targetX, int targetY, int range){
-		List<GridSpace> spaces = new List<GridSpace>();
+    //Gets all of the spaces in a box shape  around a point, including the point itself
+    // -----
+    // -xxx-
+    // -xxx-
+    // -xxx-
+    // -----
+    private List<GridSpace> getSpacesInSquare(int targetX, int targetY, int range)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
 
-		int startPosX = targetX - range;
-		int startPosY = targetY - range;
+        int startPosX = targetX - range;
+        int startPosY = targetY - range;
 
-		for(int i = 0; i < range * 2 + 1; i++){
-			for(int j = 0; j < range * 2 + 1; j++){
-				if(grid.spaceExistsInGrid(startPosX + i, startPosY + j)){
-					spaces.Add(grid.grid[startPosX + i, startPosY + j]);
-				}
-			}
-		}
+        for (int i = 0; i < range * 2 + 1; i++)
+        {
+            for (int j = 0; j < range * 2 + 1; j++)
+            {
+                if (grid.spaceExistsInGrid(startPosX + i, startPosY + j))
+                {
+                    spaces.Add(grid.grid[startPosX + i, startPosY + j]);
+                }
+            }
+        }
 
-		return spaces;
-	}
+        return spaces;
+    }
 
-	//Same as getSpacesInSquare but does not include the origin
-	// -----
-	// -xxx-
-	// -xox-
-	// -xxx-
-	// -----
-	public List<GridSpace> getSpacesInSquareExclusive(int targetX, int targetY, int range){
-		List<GridSpace> spaces = new List<GridSpace>();
+    //Same as getSpacesInSquare but does not include the origin
+    // -----
+    // -xxx-
+    // -xox-
+    // -xxx-
+    // -----
+    private List<GridSpace> getSpacesInSquareExclusive(int targetX, int targetY, int range)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
 
-		int startPosX = targetX - range;
-		int startPosY = targetY - range;
+        int startPosX = targetX - range;
+        int startPosY = targetY - range;
 
-		for(int i = 0; i < range * 2 + 1; i++){
-			for(int j = 0; j < range * 2 + 1; j++){
-				if(grid.spaceExistsInGrid(startPosX + i, startPosY + j) && !(startPosX + i == targetX && startPosY + j == targetY)){
-					spaces.Add(grid.grid[startPosX + i, startPosY + j]);
-				}
-			}
-		}
+        for (int i = 0; i < range * 2 + 1; i++)
+        {
+            for (int j = 0; j < range * 2 + 1; j++)
+            {
+                if (grid.spaceExistsInGrid(startPosX + i, startPosY + j) && !(startPosX + i == targetX && startPosY + j == targetY))
+                {
+                    spaces.Add(grid.grid[startPosX + i, startPosY + j]);
+                }
+            }
+        }
 
-		return spaces;
-	}
+        return spaces;
+    }
 
-	// --x--
-	// -xxx-
-	// xxxxx
-	// -xxx-
-	// --x--
-	public List<GridSpace> getSpacesWithinRange(int targetX, int targetY, int range){
-		List<GridSpace> startList = new List<GridSpace>();
-		List<GridSpace> finalList = new List<GridSpace>();
+    // --x--
+    // -xxx-
+    // xxxxx
+    // -xxx-
+    // --x--
+    private List<GridSpace> getSpacesWithinRange(int targetX, int targetY, int range)
+    {
+        List<GridSpace> startList = new List<GridSpace>();
+        List<GridSpace> finalList = new List<GridSpace>();
 
-		//In case this is ever called with 0 as the range
-		if(range == 0){
-			finalList.Add(getSpace(targetX, targetY));
-			return finalList;
-		}
+        //In case this is ever called with 0 as the range
+        if (range == 0)
+        {
+            finalList.Add(getSpace(targetX, targetY));
+            return finalList;
+        }
 
-		//Get the horizontal line first
-		List<GridSpace> tempList;
-		tempList = getSpacesInLine(targetX, targetY, range, GridDirection.LEFT);
-		tempList.Reverse();
-		tempList.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
+        //Get the horizontal line first
+        List<GridSpace> tempList;
+        tempList = getSpacesInLine(targetX, targetY, range, GridDirection.LEFT);
+        tempList.Reverse();
+        tempList.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
 
-		//Add that line to the start list and the final list
-		startList.AddRange(tempList);
-		finalList.AddRange(tempList);
+        //Add that line to the start list and the final list
+        startList.AddRange(tempList);
+        finalList.AddRange(tempList);
 
-		for(int i = -range; i <= range; i++){
-			int currentRange = range - Mathf.Abs(i);
-			finalList.AddRange(getSpacesInLineExclusive(targetX + i, targetY, currentRange, GridDirection.UP));
-			finalList.AddRange(getSpacesInLineExclusive(targetX + i, targetY, currentRange, GridDirection.DOWN));
-		}
+        for (int i = -range; i <= range; i++)
+        {
+            int currentRange = range - Mathf.Abs(i);
+            finalList.AddRange(getSpacesInLineExclusive(targetX + i, targetY, currentRange, GridDirection.UP));
+            finalList.AddRange(getSpacesInLineExclusive(targetX + i, targetY, currentRange, GridDirection.DOWN));
+        }
 
-		return finalList;
-	}
+        return finalList;
+    }
 
-	// --x--
-	// --x--
-	// xxxxx
-	// --x--
-	// --x--
-	public List<GridSpace> getSpacesInPlus(int targetX, int targetY, int range){
-		List<GridSpace> spaces = new List<GridSpace>();
+    // --x--
+    // -xxx-
+    // xxoxx
+    // -xxx-
+    // --x--
+    private List<GridSpace> getSpacesWithinRangeExclusive(int targetX, int targetY, int range)
+    {
+        List<GridSpace> startList = new List<GridSpace>();
+        List<GridSpace> finalList = new List<GridSpace>();
 
-		spaces.Add(getSpace(targetX, targetY));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UP));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWN));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.LEFT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
+        //In case this is ever called with 0 as the range
+        if (range == 0)
+        {
+            finalList.Add(getSpace(targetX, targetY));
+            return finalList;
+        }
 
-		return spaces;
-	}
+        GridSpace origin = getSpace(targetX, targetY);
 
-	// --x--
-	// --x--
-	// xxoxx
-	// --x--
-	// --x--
-	public List<GridSpace> getSpacesInPlusExclusive(int targetX, int targetY, int range){
-		List<GridSpace> spaces = new List<GridSpace>();
+        //Get the horizontal line first
+        List<GridSpace> tempList;
+        tempList = getSpacesInLine(targetX, targetY, range, GridDirection.LEFT);
+        tempList.Reverse();
+        tempList.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
 
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UP));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWN));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.LEFT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
+        //Add that line to the start list and the final list
+        startList.AddRange(tempList);
+        finalList.AddRange(tempList);
 
-		return spaces;
-	}
+        for (int i = -range; i <= range; i++)
+        {
+            int currentRange = range - Mathf.Abs(i);
+            finalList.AddRange(getSpacesInLineExclusive(targetX + i, targetY, currentRange, GridDirection.UP));
+            finalList.AddRange(getSpacesInLineExclusive(targetX + i, targetY, currentRange, GridDirection.DOWN));
+        }
 
-	// x---x
-	// -x-x-
-	// --x--
-	// -x-x-
-	// x---x
-	public List<GridSpace> getSpacesInCross(int targetX, int targetY, int range){
-		List<GridSpace> spaces = new List<GridSpace>();
+        finalList.Remove(origin);
+        return finalList;
+    }
 
-		spaces.Add(getSpace(targetX, targetY));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPLEFT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNLEFT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPRIGHT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNRIGHT));
+    // --x--
+    // --x--
+    // xxxxx
+    // --x--
+    // --x--
+    private List<GridSpace> getSpacesInPlus(int targetX, int targetY, int range)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
 
-		return spaces;
-	}
+        spaces.Add(getSpace(targetX, targetY));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UP));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWN));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.LEFT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
 
-	// x---x
-	// -x-x-
-	// --o--
-	// -x-x-
-	// x---x
-	public List<GridSpace> getSpacesInCrossExclusive(int targetX, int targetY, int range){
-		List<GridSpace> spaces = new List<GridSpace>();
+        return spaces;
+    }
 
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPLEFT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNLEFT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPRIGHT));
-		spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNRIGHT));
+    // --x--
+    // --x--
+    // xxoxx
+    // --x--
+    // --x--
+    private List<GridSpace> getSpacesInPlusExclusive(int targetX, int targetY, int range)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
 
-		return spaces;
-	}
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UP));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWN));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.LEFT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.RIGHT));
+
+        return spaces;
+    }
+
+    // x---x
+    // -x-x-
+    // --x--
+    // -x-x-
+    // x---x
+    private List<GridSpace> getSpacesInCross(int targetX, int targetY, int range)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
+
+        spaces.Add(getSpace(targetX, targetY));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPLEFT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNLEFT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPRIGHT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNRIGHT));
+
+        return spaces;
+    }
+
+    // x---x
+    // -x-x-
+    // --o--
+    // -x-x-
+    // x---x
+    private List<GridSpace> getSpacesInCrossExclusive(int targetX, int targetY, int range)
+    {
+        List<GridSpace> spaces = new List<GridSpace>();
+
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPLEFT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNLEFT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.UPRIGHT));
+        spaces.AddRange(getSpacesInLineExclusive(targetX, targetY, range, GridDirection.DOWNRIGHT));
+
+        return spaces;
+    }
 
 }
