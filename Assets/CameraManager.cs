@@ -36,6 +36,11 @@ public class CameraManager : MonoBehaviour
     public bool isBusy() { return busy; }
     public bool isFollowing() { return (followLoop != null); }
 
+    public GameObject getFollowing()
+    {
+        return target;
+    }
+
     public void follow(GameObject obj)
     {
         if (!busy)

@@ -95,8 +95,23 @@ public class MapCursor : MonoBehaviour, ICursor
 
     public void setActive(bool active)
     {
+        CameraManager camMgr = CameraManager.instance;
         this.active = active;
-        CameraManager.instance.follow(gameObject);
+        if (active)
+        {
+            camMgr.follow(gameObject);
+            GetComponent<SpriteRenderer>().enabled = true;
+        }
+        else
+        {
+            if (camMgr.isFollowing() && camMgr.getFollowing() == gameObject)
+            {
+                camMgr.release();
+            }
+
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
+
     }
     public IControllable getSubject() { return battleGrid; }
 }

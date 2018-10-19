@@ -27,13 +27,11 @@ public class BattleGrid : MonoBehaviour, IControllable
     public Sprite img1, img2;
 
     public GridTargeting gridTargeting;
-    public GridPathing gridPathing;
 
     // Use this for initialization
     void Start()
     {
         gridTargeting = new GridTargeting(this);
-        gridPathing = new GridPathing(this);
     }
 
     public void generateMap(int sizeX, int sizeY)
@@ -138,9 +136,9 @@ public class BattleGrid : MonoBehaviour, IControllable
 
     }
 
-    public List<GridSpace> getSpaces(GridSpace origin, TargetType shape, bool inclusive = true, GridDirection dir = GridDirection.NONE)
+    public List<GridSpace> getSpaces(GridSpace origin, TargetType shape, int range = 0, bool inclusive = true, GridDirection dir = GridDirection.NONE)
     {
-
+        return gridTargeting.getSpaces((int)origin.positionInGrid.x, (int)origin.positionInGrid.y, shape, range, inclusive, dir);
     }
 
     public bool spaceExistsInGrid(int targetX, int targetY)

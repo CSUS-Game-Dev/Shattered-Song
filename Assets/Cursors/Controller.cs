@@ -9,8 +9,7 @@ public class Controller : MonoBehaviour
     private Stack<ICursor> listeners;
 
 
-    // Use this for initialization
-    void Start()
+    void Awake()
     {
         //Singleton
         if (instance == null)
@@ -36,19 +35,41 @@ public class Controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space)) passInput(InputType.Confirm);
         if (Input.GetKeyDown(KeyCode.LeftCommand) || Input.GetKeyDown(KeyCode.LeftControl)
                                                   || Input.GetKeyDown(KeyCode.Z)) passInput(InputType.Up);
+
+        if (Input.GetKeyDown(KeyCode.B)) { removeListener(); }
     }
 
     public void addListener(ICursor listener)
     {
+        if (listeners.Count != 0)
+        {
+            listeners.Peek().setActive(false);
+        }
+
         if (listener != null)
         {
             listeners.Push(listener);
         }
+
+        Debug.Log("There are " + listeners.Count + " items in the stack");
     }
 
     public void removeListener(ICursor listener)
     {
         if (listeners.Peek().Equals(listener)) { listeners.Pop(); }
+    }
+
+    public void removeListener()
+    {
+        if (listeners.Count != 0)
+        {
+            listeners.Peek().setActive(false);
+            listeners.Pop();
+            if (listeners.Count > 0)
+            {
+                listeners.Peek().setActive(true);
+            }
+        }
     }
 
     void passInput(InputType input)
